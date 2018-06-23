@@ -7,7 +7,7 @@
     "build": "node_modules/.bin/rollup -c ./build/rollup.config.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "rollup": "^0.61.2",
     "rollup-plugin-buble": "^0.19.2"
