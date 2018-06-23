@@ -1,0 +1,15 @@
+{
+  "name": "chapter-01-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node_modules/.bin/rollup -c ./build/rollup.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "^0.61.2",
+    "rollup-plugin-buble": "^0.19.2"
+  }
+}
