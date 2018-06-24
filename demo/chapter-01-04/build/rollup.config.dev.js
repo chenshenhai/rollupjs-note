@@ -5,14 +5,23 @@ const config = require('./rollup.config');
 const resolveFile = function(filePath) {
   return path.join(__dirname, '..', filePath)
 }
+const PORT = 3000;
+
+const devSite = `http://127.0.0.1:${PORT}`;
+const devPath = path.join('example', 'index.html');
+const devUrl = `${devSite}/${devPath}`
+setTimeout(()=>{
+  console.log(`[dev]: ${devUrl}`)
+}, 1000);
+
 
 config.output.sourcemap = true;
 config.plugins = [
   ...config.plugins,
   ...[
     serve({
-      port: 3001,
-      contentBase: [resolveFile('example'), resolveFile('dist')]
+      port: PORT,
+      contentBase: [resolveFile('')]
     })
   ]
 ]
