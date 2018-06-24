@@ -1,16 +1,21 @@
 const { uglify } = require('rollup-plugin-uglify');
-const config = require('./rollup.config');
+const configList = require('./rollup.config');
 
 const resolveFile = function(filePath) {
   return path.join(__dirname, '..', filePath)
 }
 
-config.output.sourcemap = false;
-config.plugins = [
-  ...config.plugins,
-  ...[
-    uglify()
-  ]
-]
+configList.map((config, index) => {
 
-module.exports = config;
+  config.output.sourcemap = false;
+  config.plugins = [
+    ...config.plugins,
+    ...[
+      uglify()
+    ]
+  ]
+
+  return config;
+})
+
+module.exports = configList;
