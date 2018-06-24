@@ -44,6 +44,9 @@ module.exports = [
     output: {
       file: resolveFile('dist/lib/hello.js'),
       format: 'amd',
+      amd: {
+        id: 'lib/hello'
+      },
     }, 
     plugins,
   },
@@ -53,6 +56,9 @@ module.exports = [
     output: {
       file: resolveFile('dist/lib/world.js'),
       format: 'amd',
+      amd: {
+        id: 'lib/world'
+      },
     }, 
     plugins,
   },
