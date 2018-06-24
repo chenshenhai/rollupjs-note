@@ -7,6 +7,8 @@ const resolveFile = function(filePath) {
   return path.join(__dirname, '..', filePath)
 }
 
+const isProductionEnv = process.env.NODE_ENV === 'production'
+
 const babelOptions = {
   "presets": [
     ["env", {
@@ -30,10 +32,10 @@ module.exports = [
     plugins: [
       postcss({
         extract: true,
+        minimize: isProductionEnv,
       }),
       babel(babelOptions),
       buble(),
-      
     ],
   },
 ]
