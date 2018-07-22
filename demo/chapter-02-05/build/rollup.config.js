@@ -29,7 +29,8 @@ module.exports = [
     input: resolveFile('src/index.js'),
     output: {
       file: resolveFile('dist/index.js'),
-      format: 'cjs',
+      format: 'umd',
+      name: 'Demo',
     }, 
     external: ['lib/hello', 'lib/world'],
     plugins,
@@ -39,7 +40,8 @@ module.exports = [
     input: resolveFile('src/lib/hello.js'),
     output: {
       file: resolveFile('dist/lib/hello.js'),
-      format: 'cjs',
+      format: 'umd',
+      name: 'Hello',
     }, 
     plugins,
   },
@@ -48,7 +50,8 @@ module.exports = [
     input: resolveFile('src/lib/world.js'),
     output: {
       file: resolveFile('dist/lib/world.js'),
-      format: 'cjs',
+      format: 'umd',
+      name: 'World',
     }, 
     plugins,
   },
