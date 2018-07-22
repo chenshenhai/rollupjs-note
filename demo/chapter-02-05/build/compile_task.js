@@ -1,7 +1,27 @@
 const rollup = require('rollup');
+const chalk = require('chalk');
 const compose = require('koa-compose');
 
 module.exports = compileTask;
+
+function logger( text = '', opts = { status : 'INFO' } ) {
+  let logText = '';
+  switch( opts.status)  {
+    case 'SUCCESS': 
+      logText = `${chalk.bgGreen('[SUCCESS]')} ${chalk.green(text)}`
+      break;
+    case 'WARN': 
+      logText = `${chalk.bgYellow('[WARN]')} ${chalk.yellow(text)}`
+      break;
+    case 'ERROR': 
+      logText = `${chalk.bgRed('[ERROR]')} ${chalk.red(text)}`
+      break;
+    default:
+      logText = `${chalk.bgWhite('[INFO]')} ${chalk.white(text)}`
+      break;
+  }
+  console.log(logText);
+}
 
 function compileTask(configList){
   const taskList = [];
@@ -11,7 +31,7 @@ function compileTask(configList){
   });
   
   compose(taskList)( ).then(function(){
-    console.log('[SUCCESS]: END')
+    logger('END', {status: 'SUCCESS'});
   }).catch(function(err){
     console.log(err);
   })
@@ -24,11 +44,11 @@ function wrapTask( config ) {
     // create a bundle
     const bundle = await rollup.rollup(inputOptions);
 
-    console.log(`[INFO] 开始编译 ${inputOptions.input}`);  
+    logger(`开始编译 ${inputOptions.input}`);  
     await bundle.generate(outputOptions);
     // or write the bundle to disk
     await bundle.write(outputOptions);
-    console.log(`[INFO] 编译结束 ${outputOptions.file}`);  
+    logger(`编译结束 ${outputOptions.file}`);   
 
     await next();
   }
