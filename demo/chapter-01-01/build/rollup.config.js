@@ -9,7 +9,7 @@ module.exports = {
   input: resolve('src/index.js'),
   output: {
     file: resolve('dist/index.js'),
-    format: 'cjs'
+    format: 'iife'
   },
   plugins: [
     buble()
