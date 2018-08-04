@@ -20,9 +20,7 @@ module.exports = {
         }],
       ],
       "plugins": [
-        "external-helpers",
-        "transform-object-rest-spread",
-        "transform-es2015-arrow-functions"
+        "transform-object-rest-spread"
       ],
     }),
      
@@ -43,6 +41,6 @@ module.exports = {
     //   ], 
     // }),
 
-    buble(),
+    // buble(),
   ],
 }
