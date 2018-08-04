@@ -1,5 +1,4 @@
 const path = require('path');
-const buble = require('rollup-plugin-buble');
 const babel = require('rollup-plugin-babel');
 
 const resolveFile = function(filePath) {
