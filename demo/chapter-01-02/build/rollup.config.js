@@ -23,24 +23,5 @@ module.exports = {
         "transform-object-rest-spread"
       ],
     }),
-     
-    // babel({
-    //   "exclude": 'node_modules/**',
-    //   "presets": [
-    //     [
-    //       "env",
-    //       {
-    //         "modules": false
-    //       }
-    //     ],
-    //     "stage-2",
-    //     "stage-3"
-    //   ],
-    //   "plugins": [
-    //     "external-helpers",
-    //   ], 
-    // }),
-
-    // buble(),
   ],
 }
