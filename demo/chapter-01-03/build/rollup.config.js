@@ -22,7 +22,6 @@ module.exports = {
       ],
       "plugins": [
         "transform-object-rest-spread",
-        "transform-es2015-arrow-functions"
       ],
     }),
     serve({
