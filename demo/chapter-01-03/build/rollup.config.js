@@ -1,5 +1,4 @@
 const path = require('path');
-const buble = require('rollup-plugin-buble');
 const babel = require('rollup-plugin-babel');
 const serve = require('rollup-plugin-serve');
 
@@ -22,12 +21,10 @@ module.exports = {
         }],
       ],
       "plugins": [
-        "external-helpers",
         "transform-object-rest-spread",
         "transform-es2015-arrow-functions"
       ],
     }),
-    buble(),
     serve({
       port: 3001,
       contentBase: [resolveFile('example'), resolveFile('dist')]
