@@ -1,5 +1,4 @@
 const path = require('path');
-const buble = require('rollup-plugin-buble');
 const babel = require('rollup-plugin-babel');
 
 const resolveFile = function(filePath) {
@@ -26,7 +25,6 @@ module.exports = [
     }, 
     plugins: [
       babel(babelOptions),
-      buble(),
     ],
   },
   {
@@ -37,7 +35,6 @@ module.exports = [
     }, 
     plugins: [
       babel(babelOptions),
-      buble(),
     ],
   }
 ]
