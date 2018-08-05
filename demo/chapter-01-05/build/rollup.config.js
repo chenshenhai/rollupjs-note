@@ -1,5 +1,4 @@
 const path = require('path');
-const buble = require('rollup-plugin-buble');
 const babel = require('rollup-plugin-babel');
 
 const resolveFile = function(filePath) {
@@ -20,11 +19,8 @@ module.exports = {
         }],
       ],
       "plugins": [
-        "external-helpers",
-        "transform-object-rest-spread",
-        "transform-es2015-arrow-functions"
+        "transform-object-rest-spread"
       ],
     }),
-    buble(),
   ],
 }

@@ -1,5 +1,5 @@
 const rollup = require('rollup');
-const config = require('./rollup.config.dev');
+const config = require('./rollup.config');
 
 const inputOptions = config;
 const outputOptions = config.output;
