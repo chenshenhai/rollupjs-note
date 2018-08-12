@@ -1,9 +1,10 @@
 requirejs.config({
-  //By default load any module IDs from js/lib
   baseUrl: '/', 
-  paths: {
-    
-  }
+  paths: {}
 });
 
-requirejs(['example/index']);
+
+define(function (require) {
+  var demo = require('dist/index');
+  demo.init()
+});
