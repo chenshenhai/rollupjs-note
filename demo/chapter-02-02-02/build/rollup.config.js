@@ -19,6 +19,11 @@ const babelOptions = {
   ],
 }
 
+const plugins = [
+  babel(babelOptions),
+  buble(),
+]
+
 module.exports = [
   {
     input: resolveFile('src/index.js'),
@@ -30,22 +35,33 @@ module.exports = [
       // },
     }, 
     
-    plugins: [
-      babel(babelOptions),
-      buble(),
-    ],
+    external: ['lib/hello', 'lib/world'],
+    plugins,
+  },
+
+  {
+    input: resolveFile('src/lib/hello.js'),
+    output: {
+      file: resolveFile('dist/lib/hello.js'),
+      format: 'amd',
+      amd: {
+        id: 'lib/hello'
+      },
+    }, 
+    plugins,
+  },
+
+  {
+    input: resolveFile('src/lib/world.js'),
+    output: {
+      file: resolveFile('dist/lib/world.js'),
+      format: 'amd',
+      amd: {
+        id: 'lib/world'
+      },
+    }, 
+    plugins,
   },
 
 
-  // {
-  //   input: resolveFile('src/index.js'),
-  //   output: {
-  //     file: resolveFile('dist/index.js'),
-  //     format: 'umd',
-  //   }, 
-  //   plugins: [
-  //     babel(babelOptions),
-  //     buble(),
-  //   ],
-  // },
 ]
