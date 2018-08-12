@@ -1,5 +1,4 @@
 const path = require('path');
-const buble = require('rollup-plugin-buble');
 const babel = require('rollup-plugin-babel');
 
 const resolveFile = function(filePath) {
@@ -13,15 +12,12 @@ const babelOptions = {
     }],
   ],
   "plugins": [
-    "external-helpers",
     "transform-object-rest-spread",
-    "transform-es2015-arrow-functions"
   ],
 }
 
 const plugins = [
   babel(babelOptions),
-  buble(),
 ]
 
 module.exports = [
@@ -30,11 +26,7 @@ module.exports = [
     output: {
       file: resolveFile('dist/index.js'),
       format: 'amd',
-      // amd: {
-      //   id: 'demo'
-      // },
     }, 
-    
     external: ['lib/hello', 'lib/world'],
     plugins,
   },
