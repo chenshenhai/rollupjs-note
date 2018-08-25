@@ -12,7 +12,7 @@ const devIIFEPath = path.join('example', '/index.html');
 const devIIFEUrl = `${devSite}/${devIIFEPath}`; 
 
 setTimeout(()=>{
-  console.log(`[dev UMD]: ${devIIFEUrl}`) 
+  console.log(`[dev IIFE]: ${devIIFEUrl}`) 
 }, 1000);
 
 configList.map((config, index) => {
