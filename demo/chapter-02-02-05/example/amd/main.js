@@ -1,16 +1,4 @@
 requirejs.config({
-  //By default load any module IDs from js/lib
-  baseUrl: '/', 
-  paths: {
-    
-  }
-});
-
-requirejs(['']);
-
-
-requirejs.config({
-  //By default load any module IDs from js/lib
   baseUrl: '/', 
   paths: {
     'lib/demo': '/dist/index.umd',
