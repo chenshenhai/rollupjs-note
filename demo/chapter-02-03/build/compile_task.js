@@ -1,6 +1,8 @@
+const path = require('path');
 const rollup = require('rollup');
 const chalk = require('chalk');
 const compose = require('koa-compose');
+
 
 module.exports = compileTask;
 
@@ -44,11 +46,11 @@ function wrapTask( config ) {
     // create a bundle
     const bundle = await rollup.rollup(inputOptions);
 
-    logger(`开始编译 ${inputOptions.input}`);  
+    logger(`开始编译 ${path.basename(inputOptions.input) }`);  
     await bundle.generate(outputOptions);
     // or write the bundle to disk
     await bundle.write(outputOptions);
-    logger(`编译结束 ${outputOptions.file}`);   
+    logger(`编译结束 ${path.basename(outputOptions.file)}`);   
 
     await next();
   }
