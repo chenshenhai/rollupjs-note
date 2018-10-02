@@ -21,7 +21,9 @@ function watchSrc () {
 
 app.use(KoaStatic(projectPath))
 app.listen(3001, function(){
-  console.log('[example] http://127.0.0.1:3001/example/index.html')
+  console.log('[example] http://127.0.0.1:3001/example/index.html');
+  console.log('[example] http://127.0.0.1:3001/example/hello.html');
+  console.log('[example] http://127.0.0.1:3001/example/world.html');
   compileTask(configList);
   watchSrc()
 })
