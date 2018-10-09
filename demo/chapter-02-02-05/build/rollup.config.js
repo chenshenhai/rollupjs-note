@@ -12,9 +12,7 @@ const babelOptions = {
     }],
   ],
   "plugins": [
-    "external-helpers",
     "transform-object-rest-spread",
-    "transform-es2015-arrow-functions"
   ],
 }
 

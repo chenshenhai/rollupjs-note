@@ -11,9 +11,6 @@
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.3",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-plugin-transform-async-functions": "^6.22.0",
-    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-runtime": "^6.26.0",
