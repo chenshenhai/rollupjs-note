@@ -1,19 +1,18 @@
 const path = require('path');
-const buble = require('rollup-plugin-buble');
-const demo = require('./rollup-plugin-demo');
-
-const resolve = function(filePath) {
+const buble = require('rollup-plugin-buble'); 
+const resolveFile = function(filePath) {
   return path.join(__dirname, '..', filePath)
 }
 
-module.exports = {
-  input: resolve('src/index.js'),
-  output: {
-    file: resolve('dist/index.js'),
-    format: 'iife'
+module.exports = [
+  {
+    input: resolveFile('src/index.js'),
+    output: {
+      file: resolveFile('dist/index.js'),
+      format: 'umd',
+    }, 
+    plugins: [
+      buble(),
+    ],
   },
-  plugins: [
-    demo(),
-    buble()
-  ],
-}
+]
