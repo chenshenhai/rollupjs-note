@@ -1,5 +1,4 @@
 const path = require('path');
-const buble = require('rollup-plugin-buble');
 const babel = require('rollup-plugin-babel');
 const json = require('rollup-plugin-json');
 
@@ -14,9 +13,7 @@ const babelOptions = {
     }],
   ],
   "plugins": [
-    "external-helpers",
     "transform-object-rest-spread",
-    "transform-es2015-arrow-functions"
   ],
 }
 
@@ -30,7 +27,6 @@ module.exports = [
     plugins: [
       json(),
       babel(babelOptions),
-      buble(),
     ],
   },
 ]
