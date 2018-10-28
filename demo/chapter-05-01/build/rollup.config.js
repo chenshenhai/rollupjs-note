@@ -11,7 +11,6 @@ module.exports = [
     output: {
       file: resolveFile('dist/index.js'),
       format: 'iife',
-      name: 'HelloWorld'
     }, 
     plugins: [
       buble(),

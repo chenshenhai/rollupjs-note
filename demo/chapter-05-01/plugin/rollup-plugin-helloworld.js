@@ -7,16 +7,11 @@ module.exports = function json (options = {}) {
 	return {
 		name: 'json',
 
-		transform (codeStr, id) {
+		transform (code, id) {
       console.log('id = ', id);
-      console.log('codeStr = ', codeStr);
+      console.log('code = ', code);
 			return {
-				code: dataToEsm(codeStr, {
-					preferConst: options.preferConst,
-					compact: options.compact,
-					namedExports: options.namedExports,
-					indent
-				}),
+				code: code,
 				map: {mappings: ''}
 			};
 		}
