@@ -14,7 +14,9 @@ module.exports = [
     }, 
     plugins: [
       buble(),
-      helloworld(),
+      helloworld({
+        sourcemap: process.env.NODE_ENV === 'development',
+      }),
     ],
   },
 ]

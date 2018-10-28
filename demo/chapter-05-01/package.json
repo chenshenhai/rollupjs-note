@@ -10,6 +10,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "magic-string": "^0.25.1",
     "rollup": "^0.61.2",
     "rollup-plugin-buble": "^0.19.4",
     "rollup-plugin-serve": "^0.4.2",
