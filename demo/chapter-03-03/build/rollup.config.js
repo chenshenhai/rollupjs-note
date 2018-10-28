@@ -1,5 +1,4 @@
 const path = require('path');
-const buble = require('rollup-plugin-buble');
 const babel = require('rollup-plugin-babel');
 const postcss = require('rollup-plugin-postcss');
 const less = require('less');
@@ -47,9 +46,7 @@ const babelOptions = {
     }],
   ],
   "plugins": [
-    "external-helpers",
     "transform-object-rest-spread",
-    "transform-es2015-arrow-functions"
   ],
 }
 
@@ -67,7 +64,6 @@ module.exports = [
         process: processLess,
       }),
       babel(babelOptions),
-      buble(),
     ],
   },
 ]
