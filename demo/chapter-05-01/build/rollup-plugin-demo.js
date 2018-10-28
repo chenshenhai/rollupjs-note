@@ -11,10 +11,10 @@ module.exports = function( opts ) {
         }
       };
       result.code = `
-/*
- * this code is parsed by rollup-plugin-demo
- */
-${source}
+        /*
+        * this code is parsed by rollup-plugin-demo
+        */
+        ${source}
       `;
       return result;
     }
