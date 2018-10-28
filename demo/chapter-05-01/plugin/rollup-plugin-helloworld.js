@@ -19,16 +19,12 @@ module.exports = function helloworld (options = {}) {
       if (sourcemap === true) {
         codeStr = codeStr.replace(/hello\sworld/ig, function(match, offset) {
           const start = offset;
-          const end = offset + match.length + 1;
-          // magic.addSourcemapLocation(start);
-          // magic.addSourcemapLocation(end);
+          const end = offset + match.length;
           magic.overwrite(start, end, newStr);
           return newStr;
         });
       }
-
-      // console.log('magic.toString() = ', magic.toString());
-      // console.log('magic.generateMap() = ', magic.generateMap());
+      
       const resultCode = magic.toString();
       let resultMap = false;
       if (sourcemap === true) {
