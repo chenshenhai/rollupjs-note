@@ -32,7 +32,9 @@ module.exports = function helloworld (options = {}) {
       const resultCode = magic.toString();
       let resultMap = false;
       if (sourcemap === true) {
-        resultMap = magic.generateMap();
+        resultMap = magic.generateMap({
+          hires: true,
+        });
       }
 			return {
 				code: resultCode,
