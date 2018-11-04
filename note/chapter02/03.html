@@ -1,0 +1,1075 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.3 Node.js使用API模式的热编译 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="04.html" />
+    
+    
+    <link rel="prev" href="02-05.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Rollup.js 实战学习笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    [0.致读者]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../chapter00/01.html">
+            
+                <a href="../chapter00/01.html">
+            
+                    
+                    0.1 本书初衷
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../chapter00/02.html">
+            
+                <a href="../chapter00/02.html">
+            
+                    
+                    0.2 参考资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    [1. 快速开始]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../chapter01/01.html">
+            
+                <a href="../chapter01/01.html">
+            
+                    
+                    1.1 快速配置文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../chapter01/02.html">
+            
+                <a href="../chapter01/02.html">
+            
+                    
+                    1.2 ES6+编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../chapter01/03.html">
+            
+                <a href="../chapter01/03.html">
+            
+                    
+                    1.3 开发模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../chapter01/04.html">
+            
+                <a href="../chapter01/04.html">
+            
+                    
+                    1.4 生产模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../chapter01/05.html">
+            
+                <a href="../chapter01/05.html">
+            
+                    
+                    1.5 Node.js使用API模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    [2. js编译]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="01.html">
+            
+                <a href="01.html">
+            
+                    
+                    2.1 多文件输入输出编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="02.md">
+            
+                <span>
+            
+                    
+                    2.2 模块规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="02-01.html">
+            
+                <a href="02-01.html">
+            
+                    
+                    2.2.1 AMD 模块类型编译 (上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="02-02.html">
+            
+                <a href="02-02.html">
+            
+                    
+                    2.2.2 AMD 模块类型编译 (下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="02-03.html">
+            
+                <a href="02-03.html">
+            
+                    
+                    2.2.3 CommonJS 模块类型编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="02-04.html">
+            
+                <a href="02-04.html">
+            
+                    
+                    2.2.4 IIFE 模块类型编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="02-05.html">
+            
+                <a href="02-05.html">
+            
+                    
+                    2.2.5 UMD 模块类型编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.8" data-path="03.html">
+            
+                <a href="03.html">
+            
+                    
+                    2.3 Node.js使用API模式的热编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="04.html">
+            
+                <a href="04.html">
+            
+                    
+                    2.4 node模块引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="05.html">
+            
+                <a href="05.html">
+            
+                    
+                    2.5 json文件引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    [3. css编译]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../chapter03/01.html">
+            
+                <a href="../chapter03/01.html">
+            
+                    
+                    3.1 css引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../chapter03/02.html">
+            
+                <a href="../chapter03/02.html">
+            
+                    
+                    3.2 scss编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../chapter03/03.html">
+            
+                <a href="../chapter03/03.html">
+            
+                    
+                    3.3 less编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    [4. 框架使用]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../chapter04/01.html">
+            
+                <a href="../chapter04/01.html">
+            
+                    
+                    4.1 React.js编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../chapter04/02.html">
+            
+                <a href="../chapter04/02.html">
+            
+                    
+                    4.2 Vue.js编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    [5. 插件开发]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../chapter05/01.html">
+            
+                <a href="../chapter05/01.html">
+            
+                    
+                    5.1 开发插件helloworld
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    [6. 其他]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../chapter06/01.html">
+            
+                <a href="../chapter06/01.html">
+            
+                    
+                    6.1 TypeScript编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >2.3 Node.js使用API模式的热编译</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="23-nodejs&#x4F7F;&#x7528;api&#x6A21;&#x5F0F;&#x7684;&#x70ED;&#x7F16;&#x8BD1;">2.3 Node.js&#x4F7F;&#x7528;API&#x6A21;&#x5F0F;&#x7684;&#x70ED;&#x7F16;&#x8BD1;</h1>
+<h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
+<p>&#x524D;&#x9762;&#x51E0;&#x7BC7;&#x6587;&#x7AE0;&#x90FD;&#x5728;&#x4ECB;&#x7ECD;<code>rollup.js</code>&#x81EA;&#x5E26;&#x7684;<code>&#x6267;&#x884C;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7F16;&#x8BD1;</code>&#x7684;&#x80FD;&#x529B;&#xFF0C;&#x4ECE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;<code>&#x6267;&#x884C;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7F16;&#x8BD1;</code>&#x7684;&#x7F16;&#x8BD1;&#x81EA;&#x5E26;&#x4E86;<code>watch</code>&#x4EE3;&#x7801;&#x7684;&#x53D8;&#x66F4;&#x80FD;&#x529B;&#x3002;&#x4F46;&#x662F;&#x7528;<code>Node.js</code>&#x8C03;&#x7528;API&#x7F16;&#x8BD1;&#x53EA;&#x80FD;&#x6267;&#x884C;&#x4E00;&#x904D;&#x540E;&#x5C31;&#x7ED3;&#x675F;&#x3002;&#x672C;&#x7BC7;&#x4E3B;&#x8981;&#x8BB2;&#x8FF0;&#x5229;&#x7528;<code>Node.js</code>&#x7F16;&#x7801;&#x76D1;&#x542C;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x4E14;&#x6267;&#x884C;<code>Node.js</code>&#x8C03;&#x7528;API&#x8FDB;&#x884C;&#x70ED;&#x7F16;&#x8BD1;&#x3002;</p>
+<h2 id="&#x5B9E;&#x73B0;&#x4F8B;&#x5B50;">&#x5B9E;&#x73B0;&#x4F8B;&#x5B50;</h2>
+<ul>
+<li>&#x7F16;&#x8BD1;</li>
+</ul>
+<p>demo&#x4F8B;&#x5B50;</p>
+<p><a href="https://github.com/chenshenhai/rollupjs-note/blob/master/demo/chapter-02-03/" target="_blank">https://github.com/chenshenhai/rollupjs-note/blob/master/demo/chapter-02-03/</a></p>
+<pre><code class="lang-sh">npm i
+
+<span class="hljs-comment">## &#x5F00;&#x53D1;&#x6A21;&#x5F0F;</span>
+npm run dev
+
+<span class="hljs-comment">## &#x751F;&#x4EA7;&#x6A21;&#x5F0F;</span>
+npm run build
+</code></pre>
+<h2 id="&#x5B9E;&#x73B0;&#x6B65;&#x9AA4;">&#x5B9E;&#x73B0;&#x6B65;&#x9AA4;</h2>
+<h3 id="&#x6B65;&#x9AA4;1-&#x76EE;&#x5F55;&#x548C;&#x51C6;&#x5907;">&#x6B65;&#x9AA4;1: &#x76EE;&#x5F55;&#x548C;&#x51C6;&#x5907;</h3>
+<pre><code class="lang-sh">.
+&#x251C;&#x2500;&#x2500; build <span class="hljs-comment">## &#x7F16;&#x8BD1;&#x811A;&#x672C;&#x76EE;&#x5F55;</span>
+&#x2502;   &#x251C;&#x2500;&#x2500; build.js <span class="hljs-comment"># &#x751F;&#x4EA7;&#x6A21;&#x5F0F;&#x7F16;&#x8BD1;</span>
+&#x2502;   &#x251C;&#x2500;&#x2500; compile_task.js <span class="hljs-comment"># &#x7F16;&#x8BD1;&#x4EFB;&#x52A1;</span>
+&#x2502;   &#x251C;&#x2500;&#x2500; dev.js <span class="hljs-comment"># &#x5F00;&#x53D1;&#x6A21;&#x5F0F;&#x7F16;&#x8BD1;</span>
+&#x2502;   &#x251C;&#x2500;&#x2500; rollup.config.dev.js <span class="hljs-comment"># &#x5F00;&#x53D1;&#x6A21;&#x5F0F;&#x914D;&#x7F6E;</span>
+&#x2502;   &#x251C;&#x2500;&#x2500; rollup.config.js <span class="hljs-comment"># &#x57FA;&#x7840;&#x914D;&#x7F6E;</span>
+&#x2502;   &#x2514;&#x2500;&#x2500; rollup.config.prod.js <span class="hljs-comment"># &#x751F;&#x4EA7;&#x6A21;&#x5F0F;&#x914D;&#x7F6E;</span>
+&#x251C;&#x2500;&#x2500; dist <span class="hljs-comment">## &#x7F16;&#x8BD1;&#x7ED3;&#x679C;&#x76EE;&#x5F55;</span>
+&#x2502;   &#x251C;&#x2500;&#x2500; index.js
+&#x2502;   &#x2514;&#x2500;&#x2500; lib
+&#x2502;       &#x251C;&#x2500;&#x2500; hello.js
+&#x2502;       &#x2514;&#x2500;&#x2500; world.js
+&#x251C;&#x2500;&#x2500; example <span class="hljs-comment">## &#x4F8B;&#x5B50;&#x76EE;&#x5F55;</span>
+&#x2502;   &#x251C;&#x2500;&#x2500; hello.html
+&#x2502;   &#x251C;&#x2500;&#x2500; index.html
+&#x2502;   &#x2514;&#x2500;&#x2500; world.html
+&#x251C;&#x2500;&#x2500; package.json
+&#x2514;&#x2500;&#x2500; src <span class="hljs-comment">## &#x5F00;&#x53D1;&#x6E90;&#x7801;</span>
+    &#x251C;&#x2500;&#x2500; index.js
+    &#x2514;&#x2500;&#x2500; lib
+        &#x251C;&#x2500;&#x2500; hello.js
+        &#x2514;&#x2500;&#x2500; world.js
+</code></pre>
+<p>&#x5B89;&#x88C5;&#x5BF9;&#x5E94;&#x7F16;&#x8BD1;&#x7684;npm&#x6A21;&#x5757;</p>
+<pre><code class="lang-sh"><span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x57FA;&#x7840;&#x6A21;&#x5757;</span>
+npm i --save-dev rollup 
+
+<span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;&#x672C;&#x5730;&#x5F00;&#x53D1;&#x670D;&#x52A1;&#x63D2;&#x4EF6;</span>
+npm i --save-dev rollup-plugin-serve
+
+<span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;&#x4EE3;&#x7801;&#x6DF7;&#x6DC6;&#x63D2;&#x4EF6;</span>
+npm i --save-dev rollup-plugin-uglify
+
+<span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;ES6+&#x7684; babel &#x6A21;&#x5757;</span>
+npm i --save-dev rollup-plugin-babel babel-core babel-preset-env babel-plugin-transform-object-rest-spread 
+
+<span class="hljs-comment">## &#x5B89;&#x88C5;&#x5F00;&#x53D1;&#x4F8B;&#x5B50;&#x670D;&#x52A1; &#x6240;&#x9700;&#x6A21;&#x5757;</span>
+npm i --save-dev chalk <span class="hljs-comment">## &#x65E5;&#x5FD7;&#x6837;&#x5F0F;&#x6A21;&#x5757;</span>
+npm i --save-dev chokidar <span class="hljs-comment">## &#x76EE;&#x5F55;&#x76D1;&#x542C;&#x6A21;&#x5757;</span>
+npm i --save-dev koa  koa-static <span class="hljs-comment">## &#x670D;&#x52A1;&#x6A21;&#x5757;</span>
+npm i --save-dev koa-compose <span class="hljs-comment">## koa&#x6D41;&#x7A0B;&#x63A7;&#x5236;&#x6A21;&#x5757;&#xFF0C;&#x7528;&#x6765;&#x63A7;&#x5236;&#x6D41;&#x7A0B;&#x7F16;&#x8BD1;</span>
+</code></pre>
+<ul>
+<li><code>rollup</code> &#x6A21;&#x5757;&#x662F;rollup&#x7F16;&#x8BD1;&#x7684;&#x6838;&#x5FC3;&#x6A21;&#x5757;</li>
+</ul>
+<h3 id="&#x6B65;&#x9AA4;2-rollup&#x914D;&#x7F6E;">&#x6B65;&#x9AA4;2: rollup&#x914D;&#x7F6E;</h3>
+<ul>
+<li>&#x7F16;&#x8BD1;&#x57FA;&#x672C;&#x914D;&#x7F6E; <code>./build/rollup.config.js</code></li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
+<span class="hljs-keyword">const</span> buble = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-buble&apos;</span>);
+<span class="hljs-keyword">const</span> babel = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-babel&apos;</span>);
+
+<span class="hljs-keyword">const</span> resolveFile = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">filePath</span>) </span>{
+  <span class="hljs-keyword">return</span> path.join(__dirname, <span class="hljs-string">&apos;..&apos;</span>, filePath)
+}
+
+<span class="hljs-keyword">const</span> babelOptions = {
+  <span class="hljs-string">&quot;presets&quot;</span>: [
+    [<span class="hljs-string">&quot;env&quot;</span>, {
+      <span class="hljs-string">&quot;modules&quot;</span>: <span class="hljs-literal">false</span>
+    }],
+  ],
+  <span class="hljs-string">&quot;plugins&quot;</span>: [
+    <span class="hljs-string">&quot;external-helpers&quot;</span>,
+    <span class="hljs-string">&quot;transform-object-rest-spread&quot;</span>,
+    <span class="hljs-string">&quot;transform-es2015-arrow-functions&quot;</span>
+  ],
+}
+
+<span class="hljs-keyword">const</span> plugins = [
+  babel(babelOptions),
+  buble(),
+]
+
+<span class="hljs-built_in">module</span>.exports = [
+  {
+    input: resolveFile(<span class="hljs-string">&apos;src/index.js&apos;</span>),
+    output: {
+      file: resolveFile(<span class="hljs-string">&apos;dist/index.js&apos;</span>),
+      format: <span class="hljs-string">&apos;umd&apos;</span>,
+      name: <span class="hljs-string">&apos;Demo&apos;</span>,
+    }, 
+    external: [<span class="hljs-string">&apos;lib/hello&apos;</span>, <span class="hljs-string">&apos;lib/world&apos;</span>],
+    plugins,
+  },
+
+  {
+    input: resolveFile(<span class="hljs-string">&apos;src/lib/hello.js&apos;</span>),
+    output: {
+      file: resolveFile(<span class="hljs-string">&apos;dist/lib/hello.js&apos;</span>),
+      format: <span class="hljs-string">&apos;umd&apos;</span>,
+      name: <span class="hljs-string">&apos;Hello&apos;</span>,
+    }, 
+    plugins,
+  },
+
+  {
+    input: resolveFile(<span class="hljs-string">&apos;src/lib/world.js&apos;</span>),
+    output: {
+      file: resolveFile(<span class="hljs-string">&apos;dist/lib/world.js&apos;</span>),
+      format: <span class="hljs-string">&apos;umd&apos;</span>,
+      name: <span class="hljs-string">&apos;World&apos;</span>,
+    }, 
+    plugins,
+  },
+
+
+]
+</code></pre>
+<ul>
+<li><code>&#x5F00;&#x53D1;&#x6A21;&#x5F0F;</code>&#x57FA;&#x672C;&#x914D;&#x7F6E; <code>./build/rollup.config.dev.js</code></li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> configList = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./rollup.config&apos;</span>);
+
+configList.map((config, index) =&gt; {
+  config.output.sourcemap = <span class="hljs-literal">true</span>;
+  <span class="hljs-keyword">return</span> config;
+})
+
+
+<span class="hljs-built_in">module</span>.exports = configList;
+</code></pre>
+<ul>
+<li><code>&#x751F;&#x4EA7;&#x6A21;&#x5F0F;</code>&#x57FA;&#x672C;&#x914D;&#x7F6E; <code>./build/rollup.config.build.js</code></li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> { uglify } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-uglify&apos;</span>);
+<span class="hljs-keyword">const</span> configList = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./rollup.config&apos;</span>);
+
+configList.map((config, index) =&gt; {
+  config.output.sourcemap = <span class="hljs-literal">false</span>;
+  config.plugins = [
+    ...config.plugins,
+    ...[
+      uglify()
+    ]
+  ]
+  <span class="hljs-keyword">return</span> config;
+})
+
+<span class="hljs-built_in">module</span>.exports = configList;
+</code></pre>
+<ul>
+<li>&#x7F16;&#x8BD1;&#x4EFB;&#x52A1; <code>./build/compile_task.js</code></li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
+<span class="hljs-keyword">const</span> rollup = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup&apos;</span>);
+<span class="hljs-keyword">const</span> chalk = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;chalk&apos;</span>);
+<span class="hljs-keyword">const</span> compose = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;koa-compose&apos;</span>);
+
+
+<span class="hljs-built_in">module</span>.exports = compileTask;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logger</span>(<span class="hljs-params"> text = &apos;&apos;, opts = { status : &apos;INFO&apos; } </span>) </span>{
+  <span class="hljs-keyword">let</span> logText = <span class="hljs-string">&apos;&apos;</span>;
+  <span class="hljs-keyword">switch</span>( opts.status)  {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;SUCCESS&apos;</span>: 
+      logText = <span class="hljs-string">`<span class="hljs-subst">${chalk.bgGreen(&apos;[SUCCESS]&apos;)}</span> <span class="hljs-subst">${chalk.green(text)}</span>`</span>
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;WARN&apos;</span>: 
+      logText = <span class="hljs-string">`<span class="hljs-subst">${chalk.bgYellow(&apos;[WARN]&apos;)}</span> <span class="hljs-subst">${chalk.yellow(text)}</span>`</span>
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;ERROR&apos;</span>: 
+      logText = <span class="hljs-string">`<span class="hljs-subst">${chalk.bgRed(&apos;[ERROR]&apos;)}</span> <span class="hljs-subst">${chalk.red(text)}</span>`</span>
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>:
+      logText = <span class="hljs-string">`<span class="hljs-subst">${chalk.bgWhite(&apos;[INFO]&apos;)}</span> <span class="hljs-subst">${chalk.white(text)}</span>`</span>
+      <span class="hljs-keyword">break</span>;
+  }
+  <span class="hljs-built_in">console</span>.log(logText);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compileTask</span>(<span class="hljs-params">configList</span>)</span>{
+  <span class="hljs-keyword">const</span> taskList = [];
+
+  configList.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config</span>)</span>{
+    taskList.push(wrapTask(config));
+  });
+
+  compose(taskList)( ).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    logger(<span class="hljs-string">&apos;END&apos;</span>, {status: <span class="hljs-string">&apos;SUCCESS&apos;</span>});
+  }).catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(err);
+  })
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">wrapTask</span>(<span class="hljs-params"> config </span>) </span>{
+  <span class="hljs-keyword">const</span> inputOptions = config;
+  <span class="hljs-keyword">const</span> outputOptions = config.output;
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ctx, next</span>) </span>{
+    <span class="hljs-comment">// create a bundle</span>
+    <span class="hljs-keyword">const</span> bundle = <span class="hljs-keyword">await</span> rollup.rollup(inputOptions);
+
+    logger(<span class="hljs-string">`&#x5F00;&#x59CB;&#x7F16;&#x8BD1; <span class="hljs-subst">${path.basename(inputOptions.input) }</span>`</span>);  
+    <span class="hljs-keyword">await</span> bundle.generate(outputOptions);
+    <span class="hljs-comment">// or write the bundle to disk</span>
+    <span class="hljs-keyword">await</span> bundle.write(outputOptions);
+    logger(<span class="hljs-string">`&#x7F16;&#x8BD1;&#x7ED3;&#x675F; <span class="hljs-subst">${path.basename(outputOptions.file)}</span>`</span>);   
+
+    <span class="hljs-keyword">await</span> next();
+  }
+}
+</code></pre>
+<ul>
+<li>&#x5F00;&#x53D1;&#x6A21;&#x5F0F;&#x811A;&#x672C; <code>./build/dev.js</code></li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
+<span class="hljs-keyword">const</span> chokidar = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;chokidar&apos;</span>);
+<span class="hljs-keyword">const</span> Koa = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;koa&apos;</span>);
+<span class="hljs-keyword">const</span> KoaStatic = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;koa-static&apos;</span>);
+<span class="hljs-keyword">const</span> compileTask = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./compile_task&apos;</span>);
+<span class="hljs-keyword">const</span> configList = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./rollup.config.dev&apos;</span>);
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Koa();
+<span class="hljs-keyword">const</span> projectPath = path.join(__dirname, <span class="hljs-string">&apos;..&apos;</span>);
+<span class="hljs-keyword">const</span> srcPath = path.join(projectPath, <span class="hljs-string">&apos;src&apos;</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">watchSrc</span> (<span class="hljs-params"></span>) </span>{
+  chokidar.watch(srcPath, {
+    ignored: <span class="hljs-regexp">/(^|[\/\\])\../</span>
+  }).on(<span class="hljs-string">&apos;all&apos;</span>, (event, path) =&gt; {
+    <span class="hljs-keyword">if</span> ( event === <span class="hljs-string">&apos;change&apos;</span> ) {
+      compileTask(configList);
+    }
+  });
+}
+
+app.use(KoaStatic(projectPath))
+app.listen(<span class="hljs-number">3001</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;[example] http://127.0.0.1:3001/example/index.html&apos;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;[example] http://127.0.0.1:3001/example/hello.html&apos;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;[example] http://127.0.0.1:3001/example/world.html&apos;</span>);
+  compileTask(configList);
+  watchSrc()
+})
+</code></pre>
+<ul>
+<li>&#x751F;&#x4EA7;&#x6A21;&#x5F0F;&#x811A;&#x672C; <code>./build/build.js</code></li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> compileTask = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./compile_task&apos;</span>);
+<span class="hljs-keyword">const</span> configList = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./rollup.config.prod&apos;</span>);
+
+compileTask(configList)
+</code></pre>
+<ul>
+<li>&#x5728;<code>./package.json</code>&#x914D;&#x7F6E;&#x7F16;&#x8BD1;&#x6267;&#x884C;&#x811A;&#x672C;<pre><code>{
+&quot;scripts&quot;: {
+  &quot;dev&quot;: &quot;node ./build/dev.js&quot;,
+  &quot;build&quot;: &quot;node ./build/build.js&quot;
+},
+}
+</code></pre></li>
+</ul>
+<h3 id="&#x6B65;&#x9AA4;3-&#x5F85;&#x7F16;&#x8BD1;es6&#x6E90;&#x7801;">&#x6B65;&#x9AA4;3: &#x5F85;&#x7F16;&#x8BD1;ES6&#x6E90;&#x7801;</h3>
+<ul>
+<li>&#x6E90;&#x7801; <code>./src/index.js</code></li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> hello <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./lib/hello&apos;</span>;
+<span class="hljs-keyword">import</span> world <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./lib/world&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  init() {
+    <span class="hljs-keyword">const</span> arr1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+    <span class="hljs-keyword">const</span> arr2 = [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>];
+    <span class="hljs-built_in">console</span>.log([...arr1, ...arr2]);
+
+    hello.init();
+    world.init();
+  }
+}
+</code></pre>
+<ul>
+<li>&#x6E90;&#x7801; <code>./src/lib/hello.js</code></li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  init() {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;this lib/hello module!&apos;</span>)
+  }
+}
+</code></pre>
+<ul>
+<li>&#x6E90;&#x7801; <code>./src/lib/world.js</code></li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  init() {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;this lib/world module&apos;</span>)
+  }
+}
+</code></pre>
+<h3 id="&#x6B65;&#x9AA4;4-&#x7F16;&#x8BD1;&#x7ED3;&#x679C;">&#x6B65;&#x9AA4;4: &#x7F16;&#x8BD1;&#x7ED3;&#x679C;</h3>
+<ul>
+<li>&#x5728;&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x4E0B;&#x6267;&#x884C; <code>&#x751F;&#x4EA7;&#x6A21;&#x5F0F;</code> <code>npm run dev</code></li>
+</ul>
+<pre><code class="lang-sh">$ npm run dev
+
+&gt; node ./build/dev.js
+
+[example] http://127.0.0.1:3001/example/index.html
+[example] http://127.0.0.1:3001/example/hello.html
+[example] http://127.0.0.1:3001/example/world.html
+[INFO] &#x5F00;&#x59CB;&#x7F16;&#x8BD1; index.js
+[INFO] &#x7F16;&#x8BD1;&#x7ED3;&#x675F; index.js
+[INFO] &#x5F00;&#x59CB;&#x7F16;&#x8BD1; hello.js
+[INFO] &#x7F16;&#x8BD1;&#x7ED3;&#x675F; hello.js
+[INFO] &#x5F00;&#x59CB;&#x7F16;&#x8BD1; world.js
+[INFO] &#x7F16;&#x8BD1;&#x7ED3;&#x675F; world.js
+[SUCCESS] END
+</code></pre>
+<ul>
+<li>&#x7F16;&#x8BD1;&#x7ED3;&#x679C;&#x5728;&#x76EE;&#x5F55; <code>./dist/</code> &#x4E0B;</li>
+</ul>
+<h3 id="&#x6B65;&#x9AA4;5-&#x6D4F;&#x89C8;&#x5668;&#x67E5;&#x770B;&#x7ED3;&#x679C;">&#x6B65;&#x9AA4;5: &#x6D4F;&#x89C8;&#x5668;&#x67E5;&#x770B;&#x7ED3;&#x679C;</h3>
+<ul>
+<li>example &#x9875;&#x9762;1<code>./example/index.html</code></li>
+<li><p>&#x8BBF;&#x95EE; <a href="http://127.0.0.1:3001/example/index.html" target="_blank">http://127.0.0.1:3001/example/index.html</a></p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.bootcss.com/babel-polyfill/6.26.0/polyfill.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>hello world<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./../dist/index.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-built_in">window</span>.Demo.init();
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<pre><code class="lang-sh"><span class="hljs-comment">### &#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x663E;&#x793A;</span>
+&gt; [1, 2, 3, 4, 5, 6]
+&gt; this lib/hello module!
+&gt; this lib/world module
+</code></pre>
+</li>
+<li><p>example &#x9875;&#x9762;1<code>./example/hello.html</code></p>
+</li>
+<li><p>&#x8BBF;&#x95EE; <a href="http://127.0.0.1:3001/example/hello.html" target="_blank">http://127.0.0.1:3001/example/hello.html</a></p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.bootcss.com/babel-polyfill/6.26.0/polyfill.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>hello page!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./../dist/lib/hello.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-built_in">window</span>.Hello.init();
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<pre><code class="lang-sh"><span class="hljs-comment">### &#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x663E;&#x793A;</span>
+&gt; this lib/hello module!
+</code></pre>
+</li>
+<li><p>example &#x9875;&#x9762;1<code>./example/world.html</code></p>
+</li>
+<li>&#x8BBF;&#x95EE; <a href="http://127.0.0.1:3001/example/world.html" target="_blank">http://127.0.0.1:3001/example/world.html</a><pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.bootcss.com/babel-polyfill/6.26.0/polyfill.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>world page!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./../dist/lib/world.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-built_in">window</span>.World.init();
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<pre><code class="lang-sh"><span class="hljs-comment">### &#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x663E;&#x793A;</span>
+&gt; this lib/world module
+</code></pre>
+</li>
+</ul>
+<h2 id="&#x66F4;&#x591A;&#x5B66;&#x7B14;&#x8BB0;">&#x66F4;&#x591A;&#x5B66;&#x7B14;&#x8BB0;</h2>
+<p>&#x66F4;&#x591A;&#x524D;&#x7AEF;<code>&#x6280;&#x672F;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</code>&#x548C;<code>&#x5F00;&#x6E90;&#x5B66;&#x4E60;&#x6559;&#x7A0B;</code>&#x53EF;&#x5173;&#x6CE8;&#x516C;&#x4F17;&#x53F7; <code>DeepSeaCode</code>  (<code>&#x5927;&#x6D77;&#x7801;</code> ) </p>
+<p><img src="https://user-images.githubusercontent.com/8216630/43264303-495bf52c-9118-11e8-85cd-4ec6fcc6d066.jpg" alt="qrcode_for_gh_959d1c4d729a_258"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="02-05.html" class="navigation navigation-prev " aria-label="Previous page: 2.2.5 UMD 模块类型编译">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="04.html" class="navigation navigation-next " aria-label="Next page: 2.4 node模块引用">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.3 Node.js使用API模式的热编译","level":"1.4.8","depth":2,"next":{"title":"2.4 node模块引用","level":"1.4.9","depth":2,"path":"note/chapter02/04.md","ref":"note/chapter02/04.md","articles":[]},"previous":{"title":"2.2.5 UMD 模块类型编译","level":"1.4.7","depth":2,"path":"note/chapter02/02-05.md","ref":"note/chapter02/02-05.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter02/03.md","mtime":"2018-11-04T13:27:36.267Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-11-04T13:36:01.695Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

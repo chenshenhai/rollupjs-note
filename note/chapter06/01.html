@@ -1,0 +1,872 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>6.1 TypeScript编译 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Rollup.js 实战学习笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    [0.致读者]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../chapter00/01.html">
+            
+                <a href="../chapter00/01.html">
+            
+                    
+                    0.1 本书初衷
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../chapter00/02.html">
+            
+                <a href="../chapter00/02.html">
+            
+                    
+                    0.2 参考资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    [1. 快速开始]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../chapter01/01.html">
+            
+                <a href="../chapter01/01.html">
+            
+                    
+                    1.1 快速配置文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../chapter01/02.html">
+            
+                <a href="../chapter01/02.html">
+            
+                    
+                    1.2 ES6+编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../chapter01/03.html">
+            
+                <a href="../chapter01/03.html">
+            
+                    
+                    1.3 开发模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../chapter01/04.html">
+            
+                <a href="../chapter01/04.html">
+            
+                    
+                    1.4 生产模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../chapter01/05.html">
+            
+                <a href="../chapter01/05.html">
+            
+                    
+                    1.5 Node.js使用API模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    [2. js编译]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../chapter02/01.html">
+            
+                <a href="../chapter02/01.html">
+            
+                    
+                    2.1 多文件输入输出编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../chapter02/02.md">
+            
+                <span>
+            
+                    
+                    2.2 模块规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../chapter02/02-01.html">
+            
+                <a href="../chapter02/02-01.html">
+            
+                    
+                    2.2.1 AMD 模块类型编译 (上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../chapter02/02-02.html">
+            
+                <a href="../chapter02/02-02.html">
+            
+                    
+                    2.2.2 AMD 模块类型编译 (下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../chapter02/02-03.html">
+            
+                <a href="../chapter02/02-03.html">
+            
+                    
+                    2.2.3 CommonJS 模块类型编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../chapter02/02-04.html">
+            
+                <a href="../chapter02/02-04.html">
+            
+                    
+                    2.2.4 IIFE 模块类型编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../chapter02/02-05.html">
+            
+                <a href="../chapter02/02-05.html">
+            
+                    
+                    2.2.5 UMD 模块类型编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../chapter02/03.html">
+            
+                <a href="../chapter02/03.html">
+            
+                    
+                    2.3 Node.js使用API模式的热编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../chapter02/04.html">
+            
+                <a href="../chapter02/04.html">
+            
+                    
+                    2.4 node模块引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../chapter02/05.html">
+            
+                <a href="../chapter02/05.html">
+            
+                    
+                    2.5 json文件引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    [3. css编译]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../chapter03/01.html">
+            
+                <a href="../chapter03/01.html">
+            
+                    
+                    3.1 css引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../chapter03/02.html">
+            
+                <a href="../chapter03/02.html">
+            
+                    
+                    3.2 scss编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../chapter03/03.html">
+            
+                <a href="../chapter03/03.html">
+            
+                    
+                    3.3 less编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    [4. 框架使用]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../chapter04/01.html">
+            
+                <a href="../chapter04/01.html">
+            
+                    
+                    4.1 React.js编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../chapter04/02.html">
+            
+                <a href="../chapter04/02.html">
+            
+                    
+                    4.2 Vue.js编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    [5. 插件开发]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../chapter05/01.html">
+            
+                <a href="../chapter05/01.html">
+            
+                    
+                    5.1 开发插件helloworld
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    [6. 其他]
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.8.1" data-path="01.html">
+            
+                <a href="01.html">
+            
+                    
+                    6.1 TypeScript编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >6.1 TypeScript编译</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="typescript-&#x7F16;&#x8BD1;">Typescript &#x7F16;&#x8BD1;</h1>
+<h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
+<p>&#x672C;&#x7BC7;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD; <code>rollup.js</code> &#x5B98;&#x65B9;&#x63D0;&#x4F9B;&#x7684;&#x7F16;&#x8BD1; <code>Typescript</code> &#x7684;&#x63D2;&#x4EF6;&#x3002;</p>
+<h2 id="&#x5B9E;&#x73B0;&#x4F8B;&#x5B50;">&#x5B9E;&#x73B0;&#x4F8B;&#x5B50;</h2>
+<ul>
+<li>&#x7F16;&#x8BD1; Typescript </li>
+</ul>
+<p>demo&#x4F8B;&#x5B50;</p>
+<p><a href="https://github.com/chenshenhai/rollupjs-note/blob/master/demo/chapter-06-01/" target="_blank">https://github.com/chenshenhai/rollupjs-note/blob/master/demo/chapter-06-01/</a></p>
+<pre><code class="lang-sh">npm i
+
+<span class="hljs-comment">## &#x5F00;&#x53D1;&#x6A21;&#x5F0F;</span>
+npm run dev
+
+<span class="hljs-comment">## &#x751F;&#x4EA7;&#x6A21;&#x5F0F;</span>
+npm run build
+</code></pre>
+<h2 id="&#x5B9E;&#x73B0;&#x6B65;&#x9AA4;">&#x5B9E;&#x73B0;&#x6B65;&#x9AA4;</h2>
+<h3 id="&#x6B65;&#x9AA4;1-&#x76EE;&#x5F55;&#x548C;&#x51C6;&#x5907;">&#x6B65;&#x9AA4;1: &#x76EE;&#x5F55;&#x548C;&#x51C6;&#x5907;</h3>
+<pre><code class="lang-sh">.
+&#x251C;&#x2500;&#x2500; build <span class="hljs-comment">## &#x7F16;&#x8BD1;&#x811A;&#x672C;</span>
+&#x2502;   &#x251C;&#x2500;&#x2500; rollup.config.dev.js
+&#x2502;   &#x251C;&#x2500;&#x2500; rollup.config.js
+&#x2502;   &#x2514;&#x2500;&#x2500; rollup.config.prod.js
+&#x251C;&#x2500;&#x2500; dist <span class="hljs-comment">## &#x7F16;&#x8BD1;&#x7ED3;&#x679C;</span>
+&#x2502;   &#x251C;&#x2500;&#x2500; index.js
+&#x2502;   &#x2514;&#x2500;&#x2500; index.js.map
+&#x251C;&#x2500;&#x2500; example <span class="hljs-comment">## &#x4F8B;&#x5B50;</span>
+&#x2502;   &#x2514;&#x2500;&#x2500; index.html
+&#x251C;&#x2500;&#x2500; package.json
+&#x2514;&#x2500;&#x2500; src <span class="hljs-comment">## &#x5F85;&#x7F16;&#x8BD1;&#x6E90;&#x7801;</span>
+    &#x2514;&#x2500;&#x2500; index.ts
+</code></pre>
+<p>&#x5B89;&#x88C5;&#x5BF9;&#x5E94;&#x7F16;&#x8BD1;&#x7684;npm&#x6A21;&#x5757;</p>
+<pre><code class="lang-sh"><span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x57FA;&#x7840;&#x6A21;&#x5757;</span>
+npm i --save-dev rollup rollup-plugin-buble
+
+<span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;&#x672C;&#x5730;&#x5F00;&#x53D1;&#x670D;&#x52A1;&#x63D2;&#x4EF6;</span>
+npm i --save-dev rollup-plugin-serve
+
+<span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;&#x4EE3;&#x7801;&#x6DF7;&#x6DC6;&#x63D2;&#x4EF6;</span>
+npm i --save-dev rollup-plugin-uglify
+
+<span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1; Typescript &#x4EE3;&#x7801;&#x7684;&#x63D2;&#x4EF6;&#x6A21;&#x5757;</span>
+npm i --save-dev rollup-plugin-typescript typescript tslib
+</code></pre>
+<h3 id="&#x6B65;&#x9AA4;2-rollup&#x914D;&#x7F6E;">&#x6B65;&#x9AA4;2: rollup&#x914D;&#x7F6E;</h3>
+<ul>
+<li>&#x7F16;&#x8BD1;&#x57FA;&#x672C;&#x914D;&#x7F6E; <code>./build/rollup.config.js</code></li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
+<span class="hljs-keyword">const</span> buble = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-buble&apos;</span>); 
+<span class="hljs-keyword">const</span> typescript = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-typescript&apos;</span>);
+
+<span class="hljs-keyword">const</span> resolveFile = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">filePath</span>) </span>{
+  <span class="hljs-keyword">return</span> path.join(__dirname, <span class="hljs-string">&apos;..&apos;</span>, filePath)
+}
+
+<span class="hljs-built_in">module</span>.exports = [
+  {
+    input: resolveFile(<span class="hljs-string">&apos;src/index.ts&apos;</span>),
+    output: {
+      file: resolveFile(<span class="hljs-string">&apos;dist/index.js&apos;</span>),
+      format: <span class="hljs-string">&apos;iife&apos;</span>,
+      name: <span class="hljs-string">&apos;helloworld&apos;</span>,
+    }, 
+    plugins: [
+      typescript(),
+      buble(),
+    ],
+  },
+]
+</code></pre>
+<ul>
+<li><code>&#x5F00;&#x53D1;&#x6A21;&#x5F0F;</code>&#x914D;&#x7F6E;&#x57FA;&#x672C; <code>./build/rollup.config.dev.js</code></li>
+</ul>
+<pre><code class="lang-js">process.env.NODE_ENV = <span class="hljs-string">&apos;development&apos;</span>;
+
+<span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
+<span class="hljs-keyword">const</span> serve = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-serve&apos;</span>);
+<span class="hljs-keyword">const</span> configList = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./rollup.config&apos;</span>);
+
+<span class="hljs-keyword">const</span> resolveFile = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">filePath</span>) </span>{
+  <span class="hljs-keyword">return</span> path.join(__dirname, <span class="hljs-string">&apos;..&apos;</span>, filePath)
+}
+<span class="hljs-keyword">const</span> PORT = <span class="hljs-number">3000</span>;
+
+<span class="hljs-keyword">const</span> devSite = <span class="hljs-string">`http://127.0.0.1:<span class="hljs-subst">${PORT}</span>`</span>;
+<span class="hljs-keyword">const</span> devPath = path.join(<span class="hljs-string">&apos;example&apos;</span>, <span class="hljs-string">&apos;index.html&apos;</span>);
+<span class="hljs-keyword">const</span> devUrl = <span class="hljs-string">`<span class="hljs-subst">${devSite}</span>/<span class="hljs-subst">${devPath}</span>`</span>;
+
+setTimeout(()=&gt;{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`[dev]: <span class="hljs-subst">${devUrl}</span>`</span>)
+}, <span class="hljs-number">1000</span>);
+
+configList.map((config, index) =&gt; {
+
+  config.output.sourcemap = <span class="hljs-literal">true</span>;
+
+  <span class="hljs-keyword">if</span>( index === <span class="hljs-number">0</span> ) {
+    config.plugins = [
+      ...config.plugins,
+      ...[
+        serve({
+          port: PORT,
+          contentBase: [resolveFile(<span class="hljs-string">&apos;&apos;</span>)]
+        })
+      ]
+    ]
+  }
+
+  <span class="hljs-keyword">return</span> config;
+})
+
+
+<span class="hljs-built_in">module</span>.exports = configList;
+</code></pre>
+<ul>
+<li><code>&#x751F;&#x4EA7;&#x6A21;&#x5F0F;</code>&#x914D;&#x7F6E;&#x57FA;&#x672C; <code>./build/rollup.config.build.js</code></li>
+</ul>
+<pre><code class="lang-js">process.env.NODE_ENV = <span class="hljs-string">&apos;production&apos;</span>;
+
+<span class="hljs-keyword">const</span> { uglify } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-uglify&apos;</span>);
+<span class="hljs-keyword">const</span> configList = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./rollup.config&apos;</span>);
+
+<span class="hljs-keyword">const</span> resolveFile = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">filePath</span>) </span>{
+  <span class="hljs-keyword">return</span> path.join(__dirname, <span class="hljs-string">&apos;..&apos;</span>, filePath)
+}
+
+configList.map((config, index) =&gt; {
+
+  config.output.sourcemap = <span class="hljs-literal">false</span>;
+  config.plugins = [
+    ...config.plugins,
+    ...[
+      uglify()
+    ]
+  ]
+
+  <span class="hljs-keyword">return</span> config;
+})
+
+<span class="hljs-built_in">module</span>.exports = configList;
+</code></pre>
+<ul>
+<li>&#x5728;<code>./package.json</code>&#x914D;&#x7F6E;&#x7F16;&#x8BD1;&#x6267;&#x884C;&#x811A;&#x672C;<pre><code>{
+&quot;scripts&quot;: {
+  &quot;build&quot;: &quot;node_modules/.bin/rollup -c ./build/rollup.config.prod.js&quot;,
+  &quot;dev&quot;: &quot;node_modules/.bin/rollup -c ./build/rollup.config.dev.js&quot;
+},
+}
+</code></pre></li>
+</ul>
+<h3 id="&#x6B65;&#x9AA4;3-&#x5F85;&#x7F16;&#x8BD1;es6&#x6E90;&#x7801;">&#x6B65;&#x9AA4;3: &#x5F85;&#x7F16;&#x8BD1;ES6&#x6E90;&#x7801;</h3>
+<ul>
+<li>&#x6E90;&#x7801;&#x5185;&#x5BB9; <code>./src/index.ts</code></li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> n: number </span>) </span>{
+    <span class="hljs-keyword">while</span> ( --n ) {
+        <span class="hljs-keyword">await</span> delay( <span class="hljs-number">10</span>, n );
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delay</span> (<span class="hljs-params"> interval: number, num: number </span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>( resolve =&gt; setTimeout( () =&gt; {
+        <span class="hljs-built_in">console</span>.log(num)
+        resolve();
+    }, interval ) );
+}
+</code></pre>
+<h3 id="&#x6B65;&#x9AA4;4-&#x7F16;&#x8BD1;&#x7ED3;&#x679C;">&#x6B65;&#x9AA4;4: &#x7F16;&#x8BD1;&#x7ED3;&#x679C;</h3>
+<ul>
+<li>&#x5728;&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x4E0B;&#x6267;&#x884C; <code>&#x5F00;&#x53D1;&#x6A21;&#x5F0F;</code> <code>npm run dev</code></li>
+<li>&#x7F16;&#x8BD1;&#x7ED3;&#x679C;&#x5728;&#x76EE;&#x5F55; <code>./dist/</code> &#x4E0B;</li>
+</ul>
+<h3 id="&#x6B65;&#x9AA4;5-&#x6D4F;&#x89C8;&#x5668;&#x67E5;&#x770B;&#x7ED3;&#x679C;">&#x6B65;&#x9AA4;5: &#x6D4F;&#x89C8;&#x5668;&#x67E5;&#x770B;&#x7ED3;&#x679C;</h3>
+<ul>
+<li>example&#x6E90;&#x7801;<code>./example/index.html</code> </li>
+</ul>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>hello world<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./../dist/index.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="undefined">
+      helloworld(8)
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<ul>
+<li>&#x8BBF;&#x95EE; <a href="http://127.0.0.1:3000/example/index.html" target="_blank">http://127.0.0.1:3000/example/index.html</a></li>
+<li>&#x6253;&#x5F00;&#x5DE5;&#x4F5C;&#x53F0;console &#x5C31;&#x4F1A;&#x663E;&#x793A;&#x53EF;&#x8FD0;&#x884C;&#x7ED3;&#x679C;</li>
+</ul>
+<pre><code class="lang-sh">7
+6
+5
+4
+3
+2
+1
+&gt;
+</code></pre>
+<h2 id="&#x66F4;&#x591A;&#x5B66;&#x7B14;&#x8BB0;">&#x66F4;&#x591A;&#x5B66;&#x7B14;&#x8BB0;</h2>
+<p>&#x66F4;&#x591A;&#x524D;&#x7AEF;<code>&#x6280;&#x672F;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</code>&#x548C;<code>&#x5F00;&#x6E90;&#x5B66;&#x4E60;&#x6559;&#x7A0B;</code>&#x53EF;&#x5173;&#x6CE8;&#x516C;&#x4F17;&#x53F7; <code>DeepSeaCode</code>  (<code>&#x5927;&#x6D77;&#x7801;</code> ) </p>
+<p><img src="https://user-images.githubusercontent.com/8216630/43264303-495bf52c-9118-11e8-85cd-4ec6fcc6d066.jpg" alt="qrcode_for_gh_959d1c4d729a_258"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"6.1 TypeScript编译","level":"1.8.1","depth":2,"previous":{"title":"[6. 其他]","level":"1.8","depth":1,"ref":"","articles":[{"title":"6.1 TypeScript编译","level":"1.8.1","depth":2,"path":"note/chapter06/01.md","ref":"note/chapter06/01.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter06/01.md","mtime":"2018-11-04T13:27:36.270Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-11-04T13:36:01.695Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
