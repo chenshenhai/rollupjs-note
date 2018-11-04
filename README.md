@@ -13,6 +13,7 @@
 
 
 - [关于作者(我)](https://chenshenhai.github.io/)
+- [gitbook在线阅读入口](https://chenshenhai.github.io/rollupjs-note/)
 - 如有错误或疑问欢迎，提交[issues](https://github.com/chenshenhai/rollupjs-note/issues)或PR
 
 更多前端`技术学习`和`开源学习教程`可关注公众号 `DeepSeaCode`  (`大海码` ) 
