@@ -12,7 +12,6 @@
     * [1.5 Node.js使用API模式](note/chapter01/05.md)
 * [2. js编译]
     * [2.1 多文件输入输出编译](note/chapter02/01.md)
-    * [2.2 模块规范](note/chapter02/02.md)
     * [2.2.1 AMD 模块类型编译 (上)](note/chapter02/02-01.md)
     * [2.2.2 AMD 模块类型编译 (下)](note/chapter02/02-02.md)
     * [2.2.3 CommonJS 模块类型编译](note/chapter02/02-03.md)
