@@ -1,0 +1,24 @@
+{
+  "name": "chapter-06-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node_modules/.bin/rollup -w -c ./build/rollup.config.dev.js",
+    "build": "node_modules/.bin/rollup -c ./build/rollup.config.prod.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "magic-string": "^0.25.1",
+    "rollup": "^0.61.2",
+    "rollup-plugin-buble": "^0.19.4",
+    "rollup-plugin-serve": "^0.4.2",
+    "rollup-plugin-typescript": "^1.0.0",
+    "rollup-plugin-uglify": "^4.0.0",
+    "rollup-pluginutils": "^2.3.3",
+    "tslib": "^1.9.3",
+    "typescript": "^3.1.6"
+  },
+  "dependencies": {}
+}
