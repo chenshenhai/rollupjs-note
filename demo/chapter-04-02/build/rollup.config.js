@@ -4,6 +4,7 @@ const babel = require('rollup-plugin-babel');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
 const nodeGlobals = require('rollup-plugin-node-globals');
+const vue = require('rollup-plugin-vue').default;
 
 const resolveFile = function(filePath) {
   return path.join(__dirname, '..', filePath)
@@ -14,13 +15,10 @@ const babelOptions = {
     ["env", {
       "modules": false
     }],
-    "react",
   ],
   "plugins": [
     "external-helpers",
     "transform-object-rest-spread",
-    "transform-es2015-arrow-functions",
-    "transform-react-jsx",
   ],
 }
 
@@ -32,6 +30,7 @@ module.exports = [
       format: 'umd',
     }, 
     plugins: [
+      vue(),
       nodeResolve(),
       commonjs(),
       nodeGlobals(),
