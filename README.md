@@ -9,7 +9,7 @@
 
 ## 关于本书
 
-<img width="240" src="https://user-images.githubusercontent.com/8216630/47964308-ec4a8380-e072-11e8-8441-e5ac10acc81e.png">
+<img width="360" src="https://user-images.githubusercontent.com/8216630/47964308-ec4a8380-e072-11e8-8441-e5ac10acc81e.png">
 
 
 - [关于作者(我)](https://chenshenhai.github.io/)
