@@ -26,7 +26,7 @@
 
 ## 目录
 
-* [Rollup.js 实战学习笔记](README.md)
+* [Rollup.js 实战学习笔记](https://github.com/chenshenhai/rollupjs-note/blob/master/README.md)
 * [0.致读者]
     * [0.1 本书初衷](https://github.com/chenshenhai/rollupjs-note/tree/master/note/chapter00/01.md) 
     * [0.2 参考资料](https://github.com/chenshenhai/rollupjs-note/tree/master/note/chapter00/02.md)
