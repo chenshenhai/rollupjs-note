@@ -1,4 +1,4 @@
-process.env.NODE_ENV !== 'development';
+process.env.NODE_ENV = 'development';
 
 const path = require('path');
 const serve = require('rollup-plugin-serve');
