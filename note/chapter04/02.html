@@ -680,7 +680,7 @@ npm i --save-dev rollup-plugin-vue vue-template-compiler
 <ul>
 <li><code>&#x5F00;&#x53D1;&#x6A21;&#x5F0F;</code>&#x914D;&#x7F6E;&#x57FA;&#x672C; <code>./build/rollup.config.dev.js</code></li>
 </ul>
-<pre><code class="lang-js">process.env.NODE_ENV !== <span class="hljs-string">&apos;development&apos;</span>;
+<pre><code class="lang-js">process.env.NODE_ENV = <span class="hljs-string">&apos;development&apos;</span>;
 
 <span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
 <span class="hljs-keyword">const</span> serve = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-serve&apos;</span>);
@@ -724,7 +724,7 @@ configList.map((config, index) =&gt; {
 <ul>
 <li><code>&#x751F;&#x4EA7;&#x6A21;&#x5F0F;</code>&#x914D;&#x7F6E;&#x57FA;&#x672C; <code>./build/rollup.config.build.js</code></li>
 </ul>
-<pre><code class="lang-js">process.env.NODE_ENV !== <span class="hljs-string">&apos;production&apos;</span>
+<pre><code class="lang-js">process.env.NODE_ENV = <span class="hljs-string">&apos;production&apos;</span>;
 
 <span class="hljs-keyword">const</span> { uglify } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-uglify&apos;</span>);
 <span class="hljs-keyword">const</span> configList = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./rollup.config&apos;</span>);
@@ -761,7 +761,7 @@ configList.map((config, index) =&gt; {
 <ul>
 <li>&#x6E90;&#x7801;&#x5185;&#x5BB9; <code>./src/index.js</code></li>
 </ul>
-<pre><code class="lang-js"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;vue&apos;</span>;
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;vue/dist/vue&apos;</span>;
 <span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./App.vue&apos;</span>;
 
 <span class="hljs-keyword">new</span> Vue({
@@ -855,7 +855,7 @@ configList.map((config, index) =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.2 Vue.js编译","level":"1.6.2","depth":2,"next":{"title":"[5. 插件开发]","level":"1.7","depth":1,"ref":"","articles":[{"title":"5.1 开发插件helloworld","level":"1.7.1","depth":2,"path":"note/chapter05/01.md","ref":"note/chapter05/01.md","articles":[]}]},"previous":{"title":"4.1 React.js编译","level":"1.6.1","depth":2,"path":"note/chapter04/01.md","ref":"note/chapter04/01.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter04/02.md","mtime":"2018-11-05T16:37:21.963Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-11-05T16:42:39.406Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.2 Vue.js编译","level":"1.6.2","depth":2,"next":{"title":"[5. 插件开发]","level":"1.7","depth":1,"ref":"","articles":[{"title":"5.1 开发插件helloworld","level":"1.7.1","depth":2,"path":"note/chapter05/01.md","ref":"note/chapter05/01.md","articles":[]}]},"previous":{"title":"4.1 React.js编译","level":"1.6.1","depth":2,"path":"note/chapter04/01.md","ref":"note/chapter04/01.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter04/02.md","mtime":"2018-12-26T15:25:14.305Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2019-03-31T10:49:59.712Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
