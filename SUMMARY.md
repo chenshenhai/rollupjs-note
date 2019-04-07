@@ -29,5 +29,6 @@
     * [4.2 Vue.js编译](note/chapter04/02.md)
 * [5. 插件开发]
     * [5.1 开发插件helloworld](note/chapter05/01.md)
-* [6. 其他]
+* [6. 其他实战]
     * [6.1 TypeScript编译](note/chapter06/01.md)
+    * [6.2 Babel7编译](note/chapter06/02.md)
