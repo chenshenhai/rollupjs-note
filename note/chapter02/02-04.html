@@ -734,7 +734,7 @@ configList.map((config, index) =&gt; {
 <span class="hljs-built_in">module</span>.exports = configList;
 </code></pre>
 <ul>
-<li><code>&#x751F;&#x4EA7;&#x6A21;&#x5F0F;</code>&#x914D;&#x7F6E;&#x57FA;&#x672C; <code>./build/rollup.config.build.js</code></li>
+<li><code>&#x751F;&#x4EA7;&#x6A21;&#x5F0F;</code>&#x914D;&#x7F6E;&#x57FA;&#x672C; <code>./build/rollup.config.prod.js</code></li>
 </ul>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> { uglify } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-uglify&apos;</span>);
 <span class="hljs-keyword">const</span> configList = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./rollup.config&apos;</span>);
@@ -758,7 +758,7 @@ configList.map((config, index) =&gt; {
 <li>&#x5728;<code>./package.json</code>&#x914D;&#x7F6E;&#x7F16;&#x8BD1;&#x6267;&#x884C;&#x811A;&#x672C;<pre><code>{
 &quot;scripts&quot;: {
   &quot;build&quot;: &quot;node_modules/.bin/rollup -c ./build/rollup.config.prod.js&quot;,
-  &quot;dev&quot;: &quot;node_modules/.bin/rollup -c ./build/rollup.config.dev.js&quot;
+  &quot;dev&quot;: &quot;node_modules/.bin/rollup -w -c ./build/rollup.config.dev.js&quot;
 },
 }
 </code></pre></li>
@@ -950,7 +950,7 @@ configList.map((config, index) =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.2.4 IIFE 模块类型编译","level":"1.4.5","depth":2,"next":{"title":"2.2.5 UMD 模块类型编译","level":"1.4.6","depth":2,"path":"note/chapter02/02-05.md","ref":"note/chapter02/02-05.md","articles":[]},"previous":{"title":"2.2.3 CommonJS 模块类型编译","level":"1.4.4","depth":2,"path":"note/chapter02/02-03.md","ref":"note/chapter02/02-03.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter02/02-04.md","mtime":"2018-12-26T15:06:34.198Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2019-05-04T08:36:49.312Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.2.4 IIFE 模块类型编译","level":"1.4.5","depth":2,"next":{"title":"2.2.5 UMD 模块类型编译","level":"1.4.6","depth":2,"path":"note/chapter02/02-05.md","ref":"note/chapter02/02-05.md","articles":[]},"previous":{"title":"2.2.3 CommonJS 模块类型编译","level":"1.4.4","depth":2,"path":"note/chapter02/02-03.md","ref":"note/chapter02/02-03.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter02/02-04.md","mtime":"2019-07-16T13:03:34.264Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2019-07-16T13:06:04.340Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
