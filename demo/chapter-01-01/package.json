@@ -9,7 +9,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "rollup": "^0.61.2",
-    "rollup-plugin-buble": "^0.19.2"
+    "@rollup/plugin-buble": "^0.21.3",
+    "rollup": "^2.7.3"
   }
 }
