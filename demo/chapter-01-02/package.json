@@ -9,11 +9,10 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "rollup": "^0.61.2",
-    "rollup-plugin-babel": "^3.0.4"
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@rollup/plugin-babel": "^5.0.0",
+    "rollup": "^2.7.3"
   },
   "dependencies": {}
 }
