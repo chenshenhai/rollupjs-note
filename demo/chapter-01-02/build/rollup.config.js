@@ -16,14 +16,6 @@ module.exports = {
   plugins: [
     babel({
       presets: ['@babel/preset-env']
-      // "presets": [
-      //   ["env", {
-      //     "modules": false
-      //   }],
-      // ],
-      // "plugins": [
-      //   "transform-object-rest-spread"
-      // ],
     }),
   ],
 }
