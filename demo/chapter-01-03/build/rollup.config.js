@@ -1,5 +1,5 @@
 const path = require('path');
-const babel = require('rollup-plugin-babel');
+const { babel } = require('@rollup/plugin-babel');
 const serve = require('rollup-plugin-serve');
 
 const resolveFile = function(filePath) {
@@ -15,14 +15,7 @@ module.exports = {
   }, 
   plugins: [
     babel({
-      "presets": [
-        ["env", {
-          "modules": false
-        }],
-      ],
-      "plugins": [
-        "transform-object-rest-spread",
-      ],
+      presets: ['@babel/preset-env']
     }),
     serve({
       port: 3001,
