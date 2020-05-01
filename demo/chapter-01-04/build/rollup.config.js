@@ -1,5 +1,5 @@
 const path = require('path');
-const babel = require('rollup-plugin-babel');
+const { babel } = require('@rollup/plugin-babel');
 
 const resolveFile = function(filePath) {
   return path.join(__dirname, '..', filePath)
@@ -10,17 +10,11 @@ module.exports = {
   output: {
     file: resolveFile('dist/index.js'),
     format: 'umd',
+    sourcemap: true,
   }, 
   plugins: [
     babel({
-      "presets": [
-        ["env", {
-          "modules": false
-        }],
-      ],
-      "plugins": [
-        "transform-object-rest-spread",
-      ],
+      presets: ['@babel/preset-env']
     }),
   ],
 }
