@@ -1,5 +1,5 @@
 const extname = require("path").extname;
-const {createFilter, dataToEsm} = require('rollup-pluginutils');
+const { createFilter } = require('@rollup/pluginutils');
 const MagicString = require('magic-string');
 
 const newStr = 'I am rollup.js!';

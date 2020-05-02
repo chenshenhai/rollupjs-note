@@ -1,5 +1,5 @@
 const path = require('path');
-const buble = require('rollup-plugin-buble'); 
+const buble = require('@rollup/plugin-buble'); 
 const helloworld = require('./../plugin/rollup-plugin-helloworld');
 const resolveFile = function(filePath) {
   return path.join(__dirname, '..', filePath)
