@@ -1,5 +1,5 @@
 const path = require('path');
-const babel = require('rollup-plugin-babel');
+const { babel } = require('@rollup/plugin-babel');
 const postcss = require('rollup-plugin-postcss');
 
 const resolveFile = function(filePath) {
@@ -9,14 +9,7 @@ const resolveFile = function(filePath) {
 const isProductionEnv = process.env.NODE_ENV === 'production'
 
 const babelOptions = {
-  "presets": [
-    ["env", {
-      "modules": false
-    }],
-  ],
-  "plugins": [
-    "transform-object-rest-spread",
-  ],
+  "presets": ['@babel/preset-env'],
 }
 
 module.exports = [
