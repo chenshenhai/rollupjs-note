@@ -1,5 +1,5 @@
 const path = require('path');
-const babel = require('rollup-plugin-babel');
+const { babel } = require('@rollup/plugin-babel');
 const postcss = require('rollup-plugin-postcss');
 const less = require('less');
 
@@ -40,14 +40,7 @@ const processLess = function(context, payload) {
 }
 
 const babelOptions = {
-  "presets": [
-    ["env", {
-      "modules": false
-    }],
-  ],
-  "plugins": [
-    "transform-object-rest-spread",
-  ],
+  "presets": ['@babel/preset-env'],
 }
 
 module.exports = [
