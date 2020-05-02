@@ -1,9 +1,8 @@
 const path = require('path');
-const buble = require('rollup-plugin-buble');
-const babel = require('rollup-plugin-babel');
-const nodeResolve = require('rollup-plugin-node-resolve');
-const commonjs = require('rollup-plugin-commonjs');
-const nodeGlobals = require('rollup-plugin-node-globals');
+const { babel } = require('@rollup/plugin-babel');
+const nodeResolve = require('@rollup/plugin-node-resolve');
+const commonjs = require('@rollup/plugin-commonjs');
+const replace = require('@rollup/plugin-replace');
 
 const resolveFile = function(filePath) {
   return path.join(__dirname, '..', filePath)
@@ -11,16 +10,9 @@ const resolveFile = function(filePath) {
 
 const babelOptions = {
   "presets": [
-    ["env", {
-      "modules": false
-    }],
-    "react",
-  ],
-  "plugins": [
-    "external-helpers",
-    "transform-object-rest-spread",
-    "transform-react-jsx",
-  ],
+    '@babel/preset-env',
+    '@babel/preset-react'
+  ]
 }
 
 module.exports = [
@@ -33,9 +25,10 @@ module.exports = [
     plugins: [
       nodeResolve(),
       commonjs(),
-      nodeGlobals(),
       babel(babelOptions),
-      buble(),
+      replace({
+        'process.env.NODE_ENV': JSON.stringify( 'production' )
+      })
     ],
   },
 ]

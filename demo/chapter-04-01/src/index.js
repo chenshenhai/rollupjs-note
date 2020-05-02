@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/cjs/react-dom.production.min';
+import ReactDOM from 'react-dom';
 import List from './component/List.jsx';
 
 const dataList = [
