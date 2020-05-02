@@ -1,19 +1,12 @@
 const path = require('path');
-const babel = require('rollup-plugin-babel');
+const { babel } = require('@rollup/plugin-babel');
 
 const resolveFile = function(filePath) {
   return path.join(__dirname, '..', filePath)
 }
 
 const babelOptions = {
-  "presets": [
-    ["env", {
-      "modules": false
-    }],
-  ],
-  "plugins": [
-    "transform-object-rest-spread",
-  ],
+  "presets": ['@babel/preset-env']
 }
 
 module.exports = [
