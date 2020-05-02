@@ -34,5 +34,4 @@ configList.map((config, index) => {
   return config;
 })
 
-
 module.exports = configList;
