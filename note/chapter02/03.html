@@ -646,7 +646,7 @@ npm i --save-dev rollup-plugin-serve
 npm i --save-dev rollup-plugin-uglify
 
 <span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;ES6+&#x7684; babel &#x6A21;&#x5757;</span>
-npm i --save-dev rollup-plugin-babel babel-core babel-preset-env babel-plugin-transform-object-rest-spread 
+npm i --save-dev @rollup/plugin-babel @babel/core @babel/preset-env
 
 <span class="hljs-comment">## &#x5B89;&#x88C5;&#x5F00;&#x53D1;&#x4F8B;&#x5B50;&#x670D;&#x52A1; &#x6240;&#x9700;&#x6A21;&#x5757;</span>
 npm i --save-dev chalk <span class="hljs-comment">## &#x65E5;&#x5FD7;&#x6837;&#x5F0F;&#x6A21;&#x5757;</span>
@@ -662,29 +662,18 @@ npm i --save-dev koa-compose <span class="hljs-comment">## koa&#x6D41;&#x7A0B;&#
 <li>&#x7F16;&#x8BD1;&#x57FA;&#x672C;&#x914D;&#x7F6E; <code>./build/rollup.config.js</code></li>
 </ul>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
-<span class="hljs-keyword">const</span> buble = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-buble&apos;</span>);
-<span class="hljs-keyword">const</span> babel = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-babel&apos;</span>);
+<span class="hljs-keyword">const</span> { babel } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@rollup/plugin-babel&apos;</span>);
 
 <span class="hljs-keyword">const</span> resolveFile = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">filePath</span>) </span>{
   <span class="hljs-keyword">return</span> path.join(__dirname, <span class="hljs-string">&apos;..&apos;</span>, filePath)
 }
 
 <span class="hljs-keyword">const</span> babelOptions = {
-  <span class="hljs-string">&quot;presets&quot;</span>: [
-    [<span class="hljs-string">&quot;env&quot;</span>, {
-      <span class="hljs-string">&quot;modules&quot;</span>: <span class="hljs-literal">false</span>
-    }],
-  ],
-  <span class="hljs-string">&quot;plugins&quot;</span>: [
-    <span class="hljs-string">&quot;external-helpers&quot;</span>,
-    <span class="hljs-string">&quot;transform-object-rest-spread&quot;</span>,
-    <span class="hljs-string">&quot;transform-es2015-arrow-functions&quot;</span>
-  ],
+  <span class="hljs-string">&quot;presets&quot;</span>: [<span class="hljs-string">&apos;@babel/preset-env&apos;</span>]
 }
 
 <span class="hljs-keyword">const</span> plugins = [
   babel(babelOptions),
-  buble(),
 ]
 
 <span class="hljs-built_in">module</span>.exports = [
@@ -718,8 +707,6 @@ npm i --save-dev koa-compose <span class="hljs-comment">## koa&#x6D41;&#x7A0B;&#
     }, 
     plugins,
   },
-
-
 ]
 </code></pre>
 <ul>
@@ -986,9 +973,6 @@ compileTask(configList)
 </code></pre>
 </li>
 </ul>
-<h2 id="&#x66F4;&#x591A;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;">&#x66F4;&#x591A;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</h2>
-<p>&#x66F4;&#x591A;&#x524D;&#x7AEF;<code>&#x6280;&#x672F;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</code>&#x548C;<code>&#x5F00;&#x6E90;&#x5B66;&#x4E60;&#x6559;&#x7A0B;</code>&#x53EF;&#x5173;&#x6CE8;&#x516C;&#x4F17;&#x53F7; <code>DeepSeaCode</code>  (<code>&#x5927;&#x6D77;&#x7801;</code> ) </p>
-<p><img src="https://user-images.githubusercontent.com/8216630/43264303-495bf52c-9118-11e8-85cd-4ec6fcc6d066.jpg" alt="qrcode_for_gh_959d1c4d729a_258"></p>
 
                                 
                                 </section>
@@ -1032,7 +1016,7 @@ compileTask(configList)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.3 Node.js使用API模式的热编译","level":"1.4.7","depth":2,"next":{"title":"2.4 node模块引用","level":"1.4.8","depth":2,"path":"note/chapter02/04.md","ref":"note/chapter02/04.md","articles":[]},"previous":{"title":"2.2.5 UMD 模块类型编译","level":"1.4.6","depth":2,"path":"note/chapter02/02-05.md","ref":"note/chapter02/02-05.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter02/03.md","mtime":"2019-07-16T12:58:43.613Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2019-07-16T13:06:04.340Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.3 Node.js使用API模式的热编译","level":"1.4.7","depth":2,"next":{"title":"2.4 node模块引用","level":"1.4.8","depth":2,"path":"note/chapter02/04.md","ref":"note/chapter02/04.md","articles":[]},"previous":{"title":"2.2.5 UMD 模块类型编译","level":"1.4.6","depth":2,"path":"note/chapter02/02-05.md","ref":"note/chapter02/02-05.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter02/03.md","mtime":"2020-05-03T06:49:47.901Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2020-05-03T06:56:55.707Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

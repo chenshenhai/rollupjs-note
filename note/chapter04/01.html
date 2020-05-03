@@ -635,28 +635,24 @@ npm i --save-dev rollup-plugin-serve
 <span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;&#x4EE3;&#x7801;&#x6DF7;&#x6DC6;&#x63D2;&#x4EF6;</span>
 npm i --save-dev rollup-plugin-uglify
 
-<span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;npm&#x6A21;&#x5757;&#x53CA;&#x5176;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x6A21;&#x5757; &#x63D2;&#x4EF6;&#x6A21;&#x5757;</span>
-npm i --save-dev rollup-plugin-commonjs rollup-plugin-node-globals rollup-plugin-node-resolve
+<span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;npm&#x6A21;&#x5757; &#x63D2;&#x4EF6;&#x6A21;&#x5757;</span>
+npm i --save-dev @rollup/plugin-commonjs @rollup/plugin-node-resolve @rollup/plugin-replace
 
 <span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;ES6+&#x7684; babel &#x6A21;&#x5757;</span>
-npm i --save-dev rollup-plugin-babel babel-core babel-preset-env babel-plugin-transform-object-rest-spread 
+npm i --save-dev @rollup/plugin-babel @babel/core @babel/preset-env 
 
 <span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;React.js &#x9700;&#x8981;&#x7684;babel&#x63D2;&#x4EF6;&#x6A21;&#x5757;</span>
-npm i --save-dev babel-plugin-external-helpers  babel-plugin-transform-react-jsx babel-preset-react
+npm i --save-dev @babel/preset-react
 </code></pre>
-<ul>
-<li><code>rollup</code> &#x6A21;&#x5757;&#x662F;rollup&#x7F16;&#x8BD1;&#x7684;&#x6838;&#x5FC3;&#x6A21;&#x5757;</li>
-</ul>
 <h3 id="&#x6B65;&#x9AA4;2-rollup&#x914D;&#x7F6E;">&#x6B65;&#x9AA4;2: rollup&#x914D;&#x7F6E;</h3>
 <ul>
 <li>&#x7F16;&#x8BD1;&#x57FA;&#x672C;&#x914D;&#x7F6E; <code>./build/rollup.config.js</code></li>
 </ul>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
-<span class="hljs-keyword">const</span> buble = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-buble&apos;</span>);
-<span class="hljs-keyword">const</span> babel = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-babel&apos;</span>);
-<span class="hljs-keyword">const</span> nodeResolve = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-node-resolve&apos;</span>);
-<span class="hljs-keyword">const</span> commonjs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-commonjs&apos;</span>);
-<span class="hljs-keyword">const</span> nodeGlobals = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-node-globals&apos;</span>);
+<span class="hljs-keyword">const</span> { babel } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@rollup/plugin-babel&apos;</span>);
+<span class="hljs-keyword">const</span> nodeResolve = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@rollup/plugin-node-resolve&apos;</span>);
+<span class="hljs-keyword">const</span> commonjs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@rollup/plugin-commonjs&apos;</span>);
+<span class="hljs-keyword">const</span> replace = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@rollup/plugin-replace&apos;</span>);
 
 <span class="hljs-keyword">const</span> resolveFile = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">filePath</span>) </span>{
   <span class="hljs-keyword">return</span> path.join(__dirname, <span class="hljs-string">&apos;..&apos;</span>, filePath)
@@ -664,16 +660,9 @@ npm i --save-dev babel-plugin-external-helpers  babel-plugin-transform-react-jsx
 
 <span class="hljs-keyword">const</span> babelOptions = {
   <span class="hljs-string">&quot;presets&quot;</span>: [
-    [<span class="hljs-string">&quot;env&quot;</span>, {
-      <span class="hljs-string">&quot;modules&quot;</span>: <span class="hljs-literal">false</span>
-    }],
-    <span class="hljs-string">&quot;react&quot;</span>,
-  ],
-  <span class="hljs-string">&quot;plugins&quot;</span>: [
-    <span class="hljs-string">&quot;external-helpers&quot;</span>,
-    <span class="hljs-string">&quot;transform-object-rest-spread&quot;</span>,
-    <span class="hljs-string">&quot;transform-react-jsx&quot;</span>,
-  ],
+    <span class="hljs-string">&apos;@babel/preset-env&apos;</span>,
+    <span class="hljs-string">&apos;@babel/preset-react&apos;</span>
+  ]
 }
 
 <span class="hljs-built_in">module</span>.exports = [
@@ -686,9 +675,10 @@ npm i --save-dev babel-plugin-external-helpers  babel-plugin-transform-react-jsx
     plugins: [
       nodeResolve(),
       commonjs(),
-      nodeGlobals(),
       babel(babelOptions),
-      buble(),
+      replace({
+        <span class="hljs-string">&apos;process.env.NODE_ENV&apos;</span>: <span class="hljs-built_in">JSON</span>.stringify( <span class="hljs-string">&apos;production&apos;</span> )
+      })
     ],
   },
 ]
@@ -799,7 +789,7 @@ configList.map((config, index) =&gt; {
 <li>&#x6E90;&#x7801; <code>./src/index.js</code></li>
 </ul>
 <pre><code class="lang-js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
-<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-dom/cjs/react-dom.production.min&apos;</span>;
+<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-dom&apos;</span>;
 <span class="hljs-keyword">import</span> List <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./component/List.jsx&apos;</span>;
 
 <span class="hljs-keyword">const</span> dataList = [
@@ -838,9 +828,6 @@ ReactDOM.render(
 <ul>
 <li>&#x8BBF;&#x95EE; <a href="http://127.0.0.1:3000/example/index.html" target="_blank">http://127.0.0.1:3000/example/index.html</a></li>
 </ul>
-<h2 id="&#x66F4;&#x591A;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;">&#x66F4;&#x591A;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</h2>
-<p>&#x66F4;&#x591A;&#x524D;&#x7AEF;<code>&#x6280;&#x672F;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</code>&#x548C;<code>&#x5F00;&#x6E90;&#x5B66;&#x4E60;&#x6559;&#x7A0B;</code>&#x53EF;&#x5173;&#x6CE8;&#x516C;&#x4F17;&#x53F7; <code>DeepSeaCode</code>  (<code>&#x5927;&#x6D77;&#x7801;</code> ) </p>
-<p><img src="https://user-images.githubusercontent.com/8216630/43264303-495bf52c-9118-11e8-85cd-4ec6fcc6d066.jpg" alt="qrcode_for_gh_959d1c4d729a_258"></p>
 
                                 
                                 </section>
@@ -880,7 +867,7 @@ ReactDOM.render(
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.1 React.js编译","level":"1.6.1","depth":2,"next":{"title":"4.2 Vue.js编译","level":"1.6.2","depth":2,"path":"note/chapter04/02.md","ref":"note/chapter04/02.md","articles":[]},"previous":{"title":"[4. 框架使用]","level":"1.6","depth":1,"ref":"","articles":[{"title":"4.1 React.js编译","level":"1.6.1","depth":2,"path":"note/chapter04/01.md","ref":"note/chapter04/01.md","articles":[]},{"title":"4.2 Vue.js编译","level":"1.6.2","depth":2,"path":"note/chapter04/02.md","ref":"note/chapter04/02.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter04/01.md","mtime":"2019-07-16T13:03:34.265Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2019-07-16T13:06:04.340Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.1 React.js编译","level":"1.6.1","depth":2,"next":{"title":"4.2 Vue.js编译","level":"1.6.2","depth":2,"path":"note/chapter04/02.md","ref":"note/chapter04/02.md","articles":[]},"previous":{"title":"[4. 框架使用]","level":"1.6","depth":1,"ref":"","articles":[{"title":"4.1 React.js编译","level":"1.6.1","depth":2,"path":"note/chapter04/01.md","ref":"note/chapter04/01.md","articles":[]},{"title":"4.2 Vue.js编译","level":"1.6.2","depth":2,"path":"note/chapter04/02.md","ref":"note/chapter04/02.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter04/01.md","mtime":"2020-05-03T06:49:47.905Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2020-05-03T06:56:55.707Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

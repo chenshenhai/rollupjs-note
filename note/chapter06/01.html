@@ -625,7 +625,7 @@ npm run build
 </code></pre>
 <p>&#x5B89;&#x88C5;&#x5BF9;&#x5E94;&#x7F16;&#x8BD1;&#x7684;npm&#x6A21;&#x5757;</p>
 <pre><code class="lang-sh"><span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x57FA;&#x7840;&#x6A21;&#x5757;</span>
-npm i --save-dev rollup rollup-plugin-buble
+npm i --save-dev rollup @rollup/plugin-buble
 
 <span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;&#x672C;&#x5730;&#x5F00;&#x53D1;&#x670D;&#x52A1;&#x63D2;&#x4EF6;</span>
 npm i --save-dev rollup-plugin-serve
@@ -634,15 +634,15 @@ npm i --save-dev rollup-plugin-serve
 npm i --save-dev rollup-plugin-uglify
 
 <span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1; Typescript &#x4EE3;&#x7801;&#x7684;&#x63D2;&#x4EF6;&#x6A21;&#x5757;</span>
-npm i --save-dev rollup-plugin-typescript typescript tslib
+npm i --save-dev @rollup/plugin-typescript typescript
 </code></pre>
 <h3 id="&#x6B65;&#x9AA4;2-rollup&#x914D;&#x7F6E;">&#x6B65;&#x9AA4;2: rollup&#x914D;&#x7F6E;</h3>
 <ul>
 <li>&#x7F16;&#x8BD1;&#x57FA;&#x672C;&#x914D;&#x7F6E; <code>./build/rollup.config.js</code></li>
 </ul>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
-<span class="hljs-keyword">const</span> buble = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-buble&apos;</span>); 
-<span class="hljs-keyword">const</span> typescript = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-typescript&apos;</span>);
+<span class="hljs-keyword">const</span> buble = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@rollup/plugin-buble&apos;</span>); 
+<span class="hljs-keyword">const</span> typescript = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@rollup/plugin-typescript&apos;</span>);
 
 <span class="hljs-keyword">const</span> resolveFile = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">filePath</span>) </span>{
   <span class="hljs-keyword">return</span> path.join(__dirname, <span class="hljs-string">&apos;..&apos;</span>, filePath)
@@ -793,9 +793,6 @@ configList.map((config, index) =&gt; {
 1
 &gt;
 </code></pre>
-<h2 id="&#x66F4;&#x591A;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;">&#x66F4;&#x591A;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</h2>
-<p>&#x66F4;&#x591A;&#x524D;&#x7AEF;<code>&#x6280;&#x672F;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</code>&#x548C;<code>&#x5F00;&#x6E90;&#x5B66;&#x4E60;&#x6559;&#x7A0B;</code>&#x53EF;&#x5173;&#x6CE8;&#x516C;&#x4F17;&#x53F7; <code>DeepSeaCode</code>  (<code>&#x5927;&#x6D77;&#x7801;</code> ) </p>
-<p><img src="https://user-images.githubusercontent.com/8216630/43264303-495bf52c-9118-11e8-85cd-4ec6fcc6d066.jpg" alt="qrcode_for_gh_959d1c4d729a_258"></p>
 
                                 
                                 </section>
@@ -835,7 +832,7 @@ configList.map((config, index) =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.1 TypeScript编译","level":"1.8.1","depth":2,"next":{"title":"6.2 Babel7编译","level":"1.8.2","depth":2,"path":"note/chapter06/02.md","ref":"note/chapter06/02.md","articles":[]},"previous":{"title":"[6. 其他实战]","level":"1.8","depth":1,"ref":"","articles":[{"title":"6.1 TypeScript编译","level":"1.8.1","depth":2,"path":"note/chapter06/01.md","ref":"note/chapter06/01.md","articles":[]},{"title":"6.2 Babel7编译","level":"1.8.2","depth":2,"path":"note/chapter06/02.md","ref":"note/chapter06/02.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter06/01.md","mtime":"2019-07-16T13:03:34.300Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2019-07-16T13:06:04.340Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.1 TypeScript编译","level":"1.8.1","depth":2,"next":{"title":"6.2 Babel7编译","level":"1.8.2","depth":2,"path":"note/chapter06/02.md","ref":"note/chapter06/02.md","articles":[]},"previous":{"title":"[6. 其他实战]","level":"1.8","depth":1,"ref":"","articles":[{"title":"6.1 TypeScript编译","level":"1.8.1","depth":2,"path":"note/chapter06/01.md","ref":"note/chapter06/01.md","articles":[]},{"title":"6.2 Babel7编译","level":"1.8.2","depth":2,"path":"note/chapter06/02.md","ref":"note/chapter06/02.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter06/01.md","mtime":"2020-05-03T06:49:47.907Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2020-05-03T06:56:55.707Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

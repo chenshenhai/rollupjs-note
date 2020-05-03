@@ -628,14 +628,13 @@ npm i --save-dev rollup
 
 
 <span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;ES6+&#x7684; babel &#x6A21;&#x5757;</span>
-npm i --save-dev rollup-plugin-babel babel-core babel-preset-env babel-plugin-transform-object-rest-spread
+npm i --save-dev @rollup/plugin-babel @babel/core @babel/preset-env
 </code></pre>
 <ul>
 <li><code>rollup</code> &#x6A21;&#x5757;&#x662F;rollup.js&#x7F16;&#x8BD1;&#x7684;&#x6838;&#x5FC3;&#x6A21;&#x5757;</li>
-<li><code>rollup-plugin-babel</code> &#x6A21;&#x5757;&#x662F;rollup.js&#x652F;&#x6301;babel&#x5B98;&#x65B9;&#x7F16;&#x8BD1;&#x63D2;&#x4EF6;&#x6A21;&#x5757;</li>
-<li><code>babel-core</code> &#x662F;&#x5B98;&#x65B9; babel &#x7F16;&#x8BD1;&#x6838;&#x5FC3;&#x6A21;&#x5757;</li>
-<li><code>babel-preset-env</code> &#x662F;&#x5B98;&#x65B9; babel &#x7F16;&#x8BD1;&#x89E3;&#x6790;ES6+ &#x8BED;&#x8A00;&#x7684;&#x6269;&#x5C55;&#x6A21;&#x5757;</li>
-<li><code>babel-plugin-transform-object-rest-spread</code> &#x662F;&#x5B98;&#x65B9; babel &#x7F16;&#x8BD1;ES6+ &#x5BF9;&#x8C61;&#x6269;&#x5C55;&#x7684;&#x7F16;&#x8BD1;&#x63D2;&#x4EF6;</li>
+<li><code>@rollup/plugin-babel</code> &#x6A21;&#x5757;&#x662F;rollup.js&#x652F;&#x6301;babel&#x5B98;&#x65B9;&#x7F16;&#x8BD1;&#x63D2;&#x4EF6;&#x6A21;&#x5757;</li>
+<li><code>@babel/core</code> &#x662F;&#x5B98;&#x65B9; babel &#x7F16;&#x8BD1;&#x6838;&#x5FC3;&#x6A21;&#x5757;</li>
+<li><code>@babel/preset-env</code> &#x662F;&#x5B98;&#x65B9; babel &#x7F16;&#x8BD1;&#x89E3;&#x6790;ES6+ &#x8BED;&#x8A00;&#x7684;&#x6269;&#x5C55;&#x6A21;&#x5757;</li>
 </ul>
 <h3 id="&#x6B65;&#x9AA4;2-rollup&#x914D;&#x7F6E;">&#x6B65;&#x9AA4;2: rollup&#x914D;&#x7F6E;</h3>
 <ul>
@@ -643,11 +642,13 @@ npm i --save-dev rollup-plugin-babel babel-core babel-preset-env babel-plugin-tr
 <li>&#x7F16;&#x8BD1;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</li>
 </ul>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
-<span class="hljs-keyword">const</span> babel = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-babel&apos;</span>);
+<span class="hljs-keyword">const</span> { babel } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@rollup/plugin-babel&apos;</span>);
 
 <span class="hljs-keyword">const</span> resolveFile = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">filePath</span>) </span>{
   <span class="hljs-keyword">return</span> path.join(__dirname, <span class="hljs-string">&apos;..&apos;</span>, filePath)
 }
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;babel=&apos;</span>, babel);
 
 <span class="hljs-built_in">module</span>.exports = {
   input: resolveFile(<span class="hljs-string">&apos;src/index.js&apos;</span>),
@@ -657,14 +658,7 @@ npm i --save-dev rollup-plugin-babel babel-core babel-preset-env babel-plugin-tr
   }, 
   plugins: [
     babel({
-      <span class="hljs-string">&quot;presets&quot;</span>: [
-        [<span class="hljs-string">&quot;env&quot;</span>, {
-          <span class="hljs-string">&quot;modules&quot;</span>: <span class="hljs-literal">false</span>
-        }],
-      ],
-      <span class="hljs-string">&quot;plugins&quot;</span>: [
-        <span class="hljs-string">&quot;transform-object-rest-spread&quot;</span>
-      ],
+      presets: [<span class="hljs-string">&apos;@babel/preset-env&apos;</span>]
     }),
   ],
 }
@@ -722,21 +716,109 @@ initDemo();
 <li>&#x7F16;&#x8BD1;&#x6210;ES5&#x7ED3;&#x679C;&#x4E3A;</li>
 <li>&#x6CE8;&#x610F;&#xFF1A;&#x9875;&#x9762;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x8981;&#x5F15;&#x5165; <code>babel-polyfill.js</code>&#x6216;&#x8005;&#x6253;&#x5305;&#x7684;&#x65F6;&#x5019;&#x628A;<code>babel-polyfill</code> &#x6A21;&#x5757;&#x5F15;&#x7528;&#x8FDB;&#x5165;&#x9879;&#x76EE;&#x4E2D;</li>
 </ul>
-<pre><code class="lang-js">(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">global, factory</span>) </span>{
-  <span class="hljs-keyword">typeof</span> exports === <span class="hljs-string">&apos;object&apos;</span> &amp;&amp; <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">module</span> !== <span class="hljs-string">&apos;undefined&apos;</span> ? factory() :
+<pre><code class="lang-js">(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">factory</span>) </span>{
   <span class="hljs-keyword">typeof</span> define === <span class="hljs-string">&apos;function&apos;</span> &amp;&amp; define.amd ? define(factory) :
-  (factory());
-}(<span class="hljs-keyword">this</span>, (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ <span class="hljs-string">&apos;use strict&apos;</span>;
+  factory();
+}((<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ <span class="hljs-string">&apos;use strict&apos;</span>;
 
-  <span class="hljs-keyword">var</span> _extends = <span class="hljs-built_in">Object</span>.assign || <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">target</span>) </span>{ <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-built_in">arguments</span>.length; i++) { <span class="hljs-keyword">var</span> source = <span class="hljs-built_in">arguments</span>[i]; <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> source) { <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Object</span>.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } <span class="hljs-keyword">return</span> target; };
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">asyncGeneratorStep</span>(<span class="hljs-params">gen, resolve, reject, _next, _throw, key, arg</span>) </span>{
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">var</span> info = gen[key](arg);
+      <span class="hljs-keyword">var</span> value = info.value;
+    } <span class="hljs-keyword">catch</span> (error) {
+      reject(error);
+      <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-keyword">if</span> (info.done) {
+      resolve(value);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-built_in">Promise</span>.resolve(value).then(_next, _throw);
+    }
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_asyncToGenerator</span>(<span class="hljs-params">fn</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>,
+          args = <span class="hljs-built_in">arguments</span>;
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>{
+        <span class="hljs-keyword">var</span> gen = fn.apply(self, args);
+
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_next</span>(<span class="hljs-params">value</span>) </span>{
+          asyncGeneratorStep(gen, resolve, reject, _next, _throw, <span class="hljs-string">&quot;next&quot;</span>, value);
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_throw</span>(<span class="hljs-params">err</span>) </span>{
+          asyncGeneratorStep(gen, resolve, reject, _next, _throw, <span class="hljs-string">&quot;throw&quot;</span>, err);
+        }
+
+        _next(<span class="hljs-literal">undefined</span>);
+      });
+    };
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_defineProperty</span>(<span class="hljs-params">obj, key, value</span>) </span>{
+    <span class="hljs-keyword">if</span> (key <span class="hljs-keyword">in</span> obj) {
+      <span class="hljs-built_in">Object</span>.defineProperty(obj, key, {
+        value: value,
+        enumerable: <span class="hljs-literal">true</span>,
+        configurable: <span class="hljs-literal">true</span>,
+        writable: <span class="hljs-literal">true</span>
+      });
+    } <span class="hljs-keyword">else</span> {
+      obj[key] = value;
+    }
+
+    <span class="hljs-keyword">return</span> obj;
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ownKeys</span>(<span class="hljs-params">object, enumerableOnly</span>) </span>{
+    <span class="hljs-keyword">var</span> keys = <span class="hljs-built_in">Object</span>.keys(object);
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Object</span>.getOwnPropertySymbols) {
+      <span class="hljs-keyword">var</span> symbols = <span class="hljs-built_in">Object</span>.getOwnPropertySymbols(object);
+      <span class="hljs-keyword">if</span> (enumerableOnly) symbols = symbols.filter(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">sym</span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+      keys.push.apply(keys, symbols);
+    }
+
+    <span class="hljs-keyword">return</span> keys;
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_objectSpread2</span>(<span class="hljs-params">target</span>) </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-built_in">arguments</span>.length; i++) {
+      <span class="hljs-keyword">var</span> source = <span class="hljs-built_in">arguments</span>[i] != <span class="hljs-literal">null</span> ? <span class="hljs-built_in">arguments</span>[i] : {};
+
+      <span class="hljs-keyword">if</span> (i % <span class="hljs-number">2</span>) {
+        ownKeys(<span class="hljs-built_in">Object</span>(source), <span class="hljs-literal">true</span>).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">key</span>) </span>{
+          _defineProperty(target, key, source[key]);
+        });
+      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Object</span>.getOwnPropertyDescriptors) {
+        <span class="hljs-built_in">Object</span>.defineProperties(target, <span class="hljs-built_in">Object</span>.getOwnPropertyDescriptors(source));
+      } <span class="hljs-keyword">else</span> {
+        ownKeys(<span class="hljs-built_in">Object</span>(source)).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">key</span>) </span>{
+          <span class="hljs-built_in">Object</span>.defineProperty(target, key, <span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor(source, key));
+        });
+      }
+    }
+
+    <span class="hljs-keyword">return</span> target;
+  }
 
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">demo</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>{
       <span class="hljs-keyword">try</span> {
         setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-          <span class="hljs-keyword">var</span> obj1 = { a: <span class="hljs-number">1</span> };
-          <span class="hljs-keyword">var</span> obj2 = { b: <span class="hljs-number">2</span> };
-          <span class="hljs-keyword">var</span> result = _extends({}, obj1, obj2);
+          <span class="hljs-keyword">var</span> obj1 = {
+            a: <span class="hljs-number">1</span>
+          };
+          <span class="hljs-keyword">var</span> obj2 = {
+            b: <span class="hljs-number">2</span>
+          };
+
+          <span class="hljs-keyword">var</span> result = _objectSpread2(_objectSpread2({}, obj1), obj2);
+
           resolve(result);
         }, <span class="hljs-number">1000</span>);
       } <span class="hljs-keyword">catch</span> (err) {
@@ -745,8 +827,16 @@ initDemo();
     });
   }
 
-  <span class="hljs-keyword">var</span> initDemo = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">var</span> _ref = _asyncToGenerator( <span class="hljs-comment">/*#__PURE__*/</span>regeneratorRuntime.mark(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_callee</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">var</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+  <span class="hljs-keyword">var</span> arr2 = [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>];
+  <span class="hljs-built_in">console</span>.log([].concat(arr1, arr2));
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initDemo</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> _initDemo.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_initDemo</span>(<span class="hljs-params"></span>) </span>{
+    _initDemo = _asyncToGenerator( <span class="hljs-comment">/*#__PURE__*/</span>regeneratorRuntime.mark(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_callee</span>(<span class="hljs-params"></span>) </span>{
       <span class="hljs-keyword">var</span> data;
       <span class="hljs-keyword">return</span> regeneratorRuntime.wrap(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_callee$</span>(<span class="hljs-params">_context</span>) </span>{
         <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) {
@@ -757,27 +847,17 @@ initDemo();
 
             <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
               data = _context.sent;
-
               <span class="hljs-built_in">console</span>.log(data);
 
             <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:
-            <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;end&apos;</span>:
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;end&quot;</span>:
               <span class="hljs-keyword">return</span> _context.stop();
           }
         }
-      }, _callee, <span class="hljs-keyword">this</span>);
+      }, _callee);
     }));
-
-    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initDemo</span>(<span class="hljs-params"></span>) </span>{
-      <span class="hljs-keyword">return</span> _ref.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
-    };
-  }();
-
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_asyncToGenerator</span>(<span class="hljs-params">fn</span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">var</span> gen = fn.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>); <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>{ <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">step</span>(<span class="hljs-params">key, arg</span>) </span>{ <span class="hljs-keyword">try</span> { <span class="hljs-keyword">var</span> info = gen[key](arg); <span class="hljs-keyword">var</span> value = info.value; } <span class="hljs-keyword">catch</span> (error) { reject(error); <span class="hljs-keyword">return</span>; } <span class="hljs-keyword">if</span> (info.done) { resolve(value); } <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.resolve(value).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">value</span>) </span>{ step(<span class="hljs-string">&quot;next&quot;</span>, value); }, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{ step(<span class="hljs-string">&quot;throw&quot;</span>, err); }); } } <span class="hljs-keyword">return</span> step(<span class="hljs-string">&quot;next&quot;</span>); }); }; }
-
-  <span class="hljs-keyword">var</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
-  <span class="hljs-keyword">var</span> arr2 = [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>];
-  <span class="hljs-built_in">console</span>.log([].concat(arr1, arr2));
+    <span class="hljs-keyword">return</span> _initDemo.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
+  }
 
   initDemo();
 
@@ -809,9 +889,6 @@ initDemo();
 <h2 id="&#x540E;&#x8BB0;">&#x540E;&#x8BB0;</h2>
 <p>&#x672C;&#x7BC7;&#x4E3B;&#x8981;&#x8BB2;&#x8FF0;&#x4E86; <code>rollup.js</code> &#x7F16;&#x8BD1; ES6+&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x8FD0;&#x7528;&#x4E86;babel&#x63D2;&#x4EF6;&#x7F16;&#x8BD1;&#x66F4;&#x52A0;&#x9AD8;&#x7EA7;&#x7684;ES&#x8BED;&#x6CD5;&#x3002;&#x4F46;&#x662F;&#x6CE8;&#x610F;&#x4F7F;&#x7528;&#x8FC7;&#x7A0B;&#x4E2D; <code>babel-polyfill</code> &#x7684;&#x5F15;&#x7528;&#x3002;</p>
 <p>&#x524D;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x5305;&#x62EC;&#x672C;&#x7BC7;&#x90FD;&#x5728;&#x8BB2;&#x8FF0;<code>rollup.js</code>&#x7F16;&#x8BD1;&#x4F7F;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x9879;&#x76EE;&#x4E2D;&#x7F16;&#x8BD1;&#x5F00;&#x53D1;&#x4E3B;&#x8981;&#x5206;&#x6210;&#x4E86; <code>&#x5F00;&#x53D1;&#x6A21;&#x5F0F;</code>&#x548C;<code>&#x751F;&#x4EA7;&#x6A21;&#x5F0F;</code>&#x4E24;&#x79CD;&#x751A;&#x81F3;&#x66F4;&#x591A;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x4E24;&#x7BC7;&#x4E3B;&#x8981;&#x8BB2;&#x8FF0;<code>rollup.js</code>&#x600E;&#x4E48;&#x914D;&#x7F6E;<code>&#x5F00;&#x53D1;&#x6A21;&#x5F0F;</code>&#x548C;<code>&#x751F;&#x4EA7;&#x6A21;&#x5F0F;</code></p>
-<h2 id="&#x66F4;&#x591A;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;">&#x66F4;&#x591A;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</h2>
-<p>&#x66F4;&#x591A;&#x524D;&#x7AEF;<code>&#x6280;&#x672F;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</code>&#x548C;<code>&#x5F00;&#x6E90;&#x5B66;&#x4E60;&#x6559;&#x7A0B;</code>&#x53EF;&#x5173;&#x6CE8;&#x516C;&#x4F17;&#x53F7; <code>DeepSeaCode</code>  (<code>&#x5927;&#x6D77;&#x7801;</code> ) </p>
-<p><img src="https://user-images.githubusercontent.com/8216630/43264303-495bf52c-9118-11e8-85cd-4ec6fcc6d066.jpg" alt="qrcode_for_gh_959d1c4d729a_258"></p>
 
                                 
                                 </section>
@@ -855,7 +932,7 @@ initDemo();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.2 ES6+编译","level":"1.3.2","depth":2,"next":{"title":"1.3 开发模式","level":"1.3.3","depth":2,"path":"note/chapter01/03.md","ref":"note/chapter01/03.md","articles":[]},"previous":{"title":"1.1 快速配置文件","level":"1.3.1","depth":2,"path":"note/chapter01/01.md","ref":"note/chapter01/01.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter01/02.md","mtime":"2018-12-26T15:06:34.194Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2019-07-16T13:06:04.340Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.2 ES6+编译","level":"1.3.2","depth":2,"next":{"title":"1.3 开发模式","level":"1.3.3","depth":2,"path":"note/chapter01/03.md","ref":"note/chapter01/03.md","articles":[]},"previous":{"title":"1.1 快速配置文件","level":"1.3.1","depth":2,"path":"note/chapter01/01.md","ref":"note/chapter01/01.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter01/02.md","mtime":"2020-05-03T06:49:47.891Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2020-05-03T06:56:55.707Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

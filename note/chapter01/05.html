@@ -624,21 +624,16 @@ npm run build
 <pre><code class="lang-sh"><span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x57FA;&#x7840;&#x6A21;&#x5757;</span>
 npm i --save-dev rollup 
 
-<span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;&#x672C;&#x5730;&#x5F00;&#x53D1;&#x670D;&#x52A1;&#x63D2;&#x4EF6;</span>
-npm i --save-dev rollup-plugin-serve
-
-<span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;&#x4EE3;&#x7801;&#x6DF7;&#x6DC6;&#x63D2;&#x4EF6;</span>
-npm i --save-dev rollup-plugin-uglify
 
 <span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;ES6+&#x7684; babel &#x6A21;&#x5757;</span>
-npm i --save-dev rollup-plugin-babel babel-core babel-preset-env babel-plugin-transform-object-rest-spread
+npm i --save-dev @rollup/plugin-babel @babel/core @babel/preset-env
 </code></pre>
 <h3 id="&#x6B65;&#x9AA4;2-rollup&#x914D;&#x7F6E;">&#x6B65;&#x9AA4;2: rollup&#x914D;&#x7F6E;</h3>
 <ul>
 <li>rollup &#x7F16;&#x8BD1;&#x914D;&#x7F6E; <code>./build/rolluo.config.js</code></li>
 </ul>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
-<span class="hljs-keyword">const</span> babel = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-babel&apos;</span>);
+<span class="hljs-keyword">const</span> { babel } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@rollup/plugin-babel&apos;</span>);
 
 <span class="hljs-keyword">const</span> resolveFile = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">filePath</span>) </span>{
   <span class="hljs-keyword">return</span> path.join(__dirname, <span class="hljs-string">&apos;..&apos;</span>, filePath)
@@ -652,14 +647,7 @@ npm i --save-dev rollup-plugin-babel babel-core babel-preset-env babel-plugin-tr
   }, 
   plugins: [
     babel({
-      <span class="hljs-string">&quot;presets&quot;</span>: [
-        [<span class="hljs-string">&quot;env&quot;</span>, {
-          <span class="hljs-string">&quot;modules&quot;</span>: <span class="hljs-literal">false</span>
-        }],
-      ],
-      <span class="hljs-string">&quot;plugins&quot;</span>: [
-        <span class="hljs-string">&quot;transform-object-rest-spread&quot;</span>
-      ],
+      <span class="hljs-string">&quot;presets&quot;</span>: [<span class="hljs-string">&apos;@babel/preset-env&apos;</span>]
     }),
   ],
 }
@@ -709,9 +697,6 @@ build();
 </ul>
 <h2 id="&#x540E;&#x8BB0;">&#x540E;&#x8BB0;</h2>
 <p>&#x6709;&#x4E86;&#x524D;&#x9762;&#x51E0;&#x7BC7;&#x7684;&#x5B66;&#x4E60;&#xFF0C;&#x672C;&#x7BC7;&#x5E94;&#x8BE5;&#x662F;&#x5F88;&#x5FEB;&#x5C31;&#x80FD;&#x4E0A;&#x624B;&#x7406;&#x89E3;&#x548C;&#x5B9E;&#x8DF5;&#x7F16;&#x8BD1;&#x3002;&#x7B2C;&#x4E00;&#x7AE0;&#x7684;&#x5FEB;&#x901F;&#x4E0A;&#x624B;&#x5C31;&#x5230;&#x6B64;&#x7ED3;&#x675F;&#xFF0C;&#x4E0B;&#x4E00;&#x7AE0;&#x5C06;&#x8BE6;&#x89E3;&#x8BB2;&#x8FF0;<code>*.js</code>&#x6587;&#x4EF6;&#x7684;&#x9AD8;&#x9636;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x3002;</p>
-<h2 id="&#x66F4;&#x591A;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;">&#x66F4;&#x591A;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</h2>
-<p>&#x66F4;&#x591A;&#x524D;&#x7AEF;<code>&#x6280;&#x672F;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</code>&#x548C;<code>&#x5F00;&#x6E90;&#x5B66;&#x4E60;&#x6559;&#x7A0B;</code>&#x53EF;&#x5173;&#x6CE8;&#x516C;&#x4F17;&#x53F7; <code>DeepSeaCode</code>  (<code>&#x5927;&#x6D77;&#x7801;</code> ) </p>
-<p><img src="https://user-images.githubusercontent.com/8216630/43264303-495bf52c-9118-11e8-85cd-4ec6fcc6d066.jpg" alt="qrcode_for_gh_959d1c4d729a_258"></p>
 
                                 
                                 </section>
@@ -751,7 +736,7 @@ build();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.5 Node.js使用API模式","level":"1.3.5","depth":2,"next":{"title":"[2. js编译]","level":"1.4","depth":1,"ref":"","articles":[{"title":"2.1 多文件输入输出编译","level":"1.4.1","depth":2,"path":"note/chapter02/01.md","ref":"note/chapter02/01.md","articles":[]},{"title":"2.2.1 AMD 模块类型编译 (上)","level":"1.4.2","depth":2,"path":"note/chapter02/02-01.md","ref":"note/chapter02/02-01.md","articles":[]},{"title":"2.2.2 AMD 模块类型编译 (下)","level":"1.4.3","depth":2,"path":"note/chapter02/02-02.md","ref":"note/chapter02/02-02.md","articles":[]},{"title":"2.2.3 CommonJS 模块类型编译","level":"1.4.4","depth":2,"path":"note/chapter02/02-03.md","ref":"note/chapter02/02-03.md","articles":[]},{"title":"2.2.4 IIFE 模块类型编译","level":"1.4.5","depth":2,"path":"note/chapter02/02-04.md","ref":"note/chapter02/02-04.md","articles":[]},{"title":"2.2.5 UMD 模块类型编译","level":"1.4.6","depth":2,"path":"note/chapter02/02-05.md","ref":"note/chapter02/02-05.md","articles":[]},{"title":"2.3 Node.js使用API模式的热编译","level":"1.4.7","depth":2,"path":"note/chapter02/03.md","ref":"note/chapter02/03.md","articles":[]},{"title":"2.4 node模块引用","level":"1.4.8","depth":2,"path":"note/chapter02/04.md","ref":"note/chapter02/04.md","articles":[]},{"title":"2.5 json文件引用","level":"1.4.9","depth":2,"path":"note/chapter02/05.md","ref":"note/chapter02/05.md","articles":[]}]},"previous":{"title":"1.4 生产模式","level":"1.3.4","depth":2,"path":"note/chapter01/04.md","ref":"note/chapter01/04.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter01/05.md","mtime":"2018-12-26T15:06:34.195Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2019-07-16T13:06:04.340Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.5 Node.js使用API模式","level":"1.3.5","depth":2,"next":{"title":"[2. js编译]","level":"1.4","depth":1,"ref":"","articles":[{"title":"2.1 多文件输入输出编译","level":"1.4.1","depth":2,"path":"note/chapter02/01.md","ref":"note/chapter02/01.md","articles":[]},{"title":"2.2.1 AMD 模块类型编译 (上)","level":"1.4.2","depth":2,"path":"note/chapter02/02-01.md","ref":"note/chapter02/02-01.md","articles":[]},{"title":"2.2.2 AMD 模块类型编译 (下)","level":"1.4.3","depth":2,"path":"note/chapter02/02-02.md","ref":"note/chapter02/02-02.md","articles":[]},{"title":"2.2.3 CommonJS 模块类型编译","level":"1.4.4","depth":2,"path":"note/chapter02/02-03.md","ref":"note/chapter02/02-03.md","articles":[]},{"title":"2.2.4 IIFE 模块类型编译","level":"1.4.5","depth":2,"path":"note/chapter02/02-04.md","ref":"note/chapter02/02-04.md","articles":[]},{"title":"2.2.5 UMD 模块类型编译","level":"1.4.6","depth":2,"path":"note/chapter02/02-05.md","ref":"note/chapter02/02-05.md","articles":[]},{"title":"2.3 Node.js使用API模式的热编译","level":"1.4.7","depth":2,"path":"note/chapter02/03.md","ref":"note/chapter02/03.md","articles":[]},{"title":"2.4 node模块引用","level":"1.4.8","depth":2,"path":"note/chapter02/04.md","ref":"note/chapter02/04.md","articles":[]},{"title":"2.5 json文件引用","level":"1.4.9","depth":2,"path":"note/chapter02/05.md","ref":"note/chapter02/05.md","articles":[]}]},"previous":{"title":"1.4 生产模式","level":"1.3.4","depth":2,"path":"note/chapter01/04.md","ref":"note/chapter01/04.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter01/05.md","mtime":"2020-05-03T06:49:47.895Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2020-05-03T06:56:55.707Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

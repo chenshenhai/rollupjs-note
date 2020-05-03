@@ -630,7 +630,7 @@ npm run build
 npm i --save-dev rollup 
 
 <span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x63D2;&#x4EF6;&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#x6A21;&#x5757;</span>
-npm i --save-dev rollup-pluginutils
+npm i --save-dev @rollup/pluginutils
 
 <span class="hljs-comment">## &#x5B89;&#x88C5; sourcemap &#x5904;&#x7406;&#x6A21;&#x5757;</span>
 npm i --save-dev magic-string
@@ -639,7 +639,7 @@ npm i --save-dev magic-string
 npm i --save-dev rollup-plugin-serve
 
 <span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;ES6&#x4EE3;&#x7801;&#x57FA;&#x7840;&#x63D2;&#x4EF6; &#x6A21;&#x5757;</span>
-npm i --save-dev rollup-plugin-buble
+npm i --save-dev @rollup/plugin-buble
 
 <span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;&#x4EE3;&#x7801;&#x6DF7;&#x6DC6;&#x63D2;&#x4EF6; &#x6A21;&#x5757;</span>
 npm i --save-dev rollup-plugin-uglify
@@ -649,7 +649,7 @@ npm i --save-dev rollup-plugin-uglify
 <li>&#x7F16;&#x8BD1;&#x57FA;&#x672C;&#x914D;&#x7F6E; <code>./build/rollup.config.js</code></li>
 </ul>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
-<span class="hljs-keyword">const</span> buble = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-buble&apos;</span>); 
+<span class="hljs-keyword">const</span> buble = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@rollup/plugin-buble&apos;</span>); 
 <span class="hljs-keyword">const</span> helloworld = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./../plugin/rollup-plugin-helloworld&apos;</span>);
 <span class="hljs-keyword">const</span> resolveFile = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">filePath</span>) </span>{
   <span class="hljs-keyword">return</span> path.join(__dirname, <span class="hljs-string">&apos;..&apos;</span>, filePath)
@@ -756,7 +756,7 @@ configList.map((config, index) =&gt; {
 <li>&#x6E90;&#x7801;&#x8DEF;&#x5F84; <code>./plugin/rollup-plugin-helloworld.js</code></li>
 </ul>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> extname = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;path&quot;</span>).extname;
-<span class="hljs-keyword">const</span> {createFilter, dataToEsm} = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-pluginutils&apos;</span>);
+<span class="hljs-keyword">const</span> { createFilter } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@rollup/pluginutils&apos;</span>);
 <span class="hljs-keyword">const</span> MagicString = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;magic-string&apos;</span>);
 
 <span class="hljs-keyword">const</span> newStr = <span class="hljs-string">&apos;I am rollup.js!&apos;</span>;
@@ -766,17 +766,14 @@ configList.map((config, index) =&gt; {
   <span class="hljs-keyword">const</span> sourcemap = options.sourcemap === <span class="hljs-literal">true</span>;
 
     <span class="hljs-keyword">return</span> {
-        <span class="hljs-comment">// &#x63D2;&#x4EF6;&#x540D;&#x79F0;</span>
         name: <span class="hljs-string">&apos;helloworld&apos;</span>,
 
-        <span class="hljs-comment">// &#x63D2;&#x4EF6;&#x5904;&#x7406;&#x4EE3;&#x7801;&#x7F16;&#x8BD1;</span>
         transform (code, id) {
       <span class="hljs-keyword">if</span> (!filter(id) || extname(id) !== <span class="hljs-string">&quot;.js&quot;</span>) <span class="hljs-keyword">return</span>;
 
       <span class="hljs-keyword">let</span> codeStr = <span class="hljs-string">`<span class="hljs-subst">${code}</span>`</span>;
       <span class="hljs-keyword">const</span> magic = <span class="hljs-keyword">new</span> MagicString(codeStr);
       <span class="hljs-keyword">if</span> (sourcemap === <span class="hljs-literal">true</span>) {
-        <span class="hljs-comment">// &#x5982;&#x679C;&#x914D;&#x7F6E;&#x6709;sourcemap &#x5219;&#x5BF9;sourcemap &#x5904;&#x7406; </span>
         codeStr = codeStr.replace(<span class="hljs-regexp">/hello\sworld/ig</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">match, offset</span>) </span>{
           <span class="hljs-keyword">const</span> start = offset;
           <span class="hljs-keyword">const</span> end = offset + match.length;
@@ -792,9 +789,9 @@ configList.map((config, index) =&gt; {
           hires: <span class="hljs-literal">true</span>,
         });
       }
-      <span class="hljs-keyword">return</span> {
-          code: resultCode,
-          map: resultMap,
+            <span class="hljs-keyword">return</span> {
+                code: resultCode,
+                map: resultMap,
       };
     }
 
@@ -882,9 +879,6 @@ demo.init();
 </li>
 </ul>
 <p><img width="761" alt="wx-0001" src="https://user-images.githubusercontent.com/8216630/47959986-cac6a900-e02c-11e8-9c26-be0980e2b49f.png"></p>
-<h2 id="&#x66F4;&#x591A;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;">&#x66F4;&#x591A;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</h2>
-<p>&#x66F4;&#x591A;&#x524D;&#x7AEF;<code>&#x6280;&#x672F;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</code>&#x548C;<code>&#x5F00;&#x6E90;&#x5B66;&#x4E60;&#x6559;&#x7A0B;</code>&#x53EF;&#x5173;&#x6CE8;&#x516C;&#x4F17;&#x53F7; <code>DeepSeaCode</code>  (<code>&#x5927;&#x6D77;&#x7801;</code> ) </p>
-<p><img src="https://user-images.githubusercontent.com/8216630/43264303-495bf52c-9118-11e8-85cd-4ec6fcc6d066.jpg" alt="qrcode_for_gh_959d1c4d729a_258"></p>
 
                                 
                                 </section>
@@ -920,7 +914,7 @@ demo.init();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"5.1 开发插件helloworld","level":"1.7.1","depth":2,"next":{"title":"[6. 其他实战]","level":"1.8","depth":1,"ref":"","articles":[{"title":"6.1 TypeScript编译","level":"1.8.1","depth":2,"path":"note/chapter06/01.md","ref":"note/chapter06/01.md","articles":[]},{"title":"6.2 Babel7编译","level":"1.8.2","depth":2,"path":"note/chapter06/02.md","ref":"note/chapter06/02.md","articles":[]}]},"previous":{"title":"[5. 插件开发]","level":"1.7","depth":1,"ref":"","articles":[{"title":"5.1 开发插件helloworld","level":"1.7.1","depth":2,"path":"note/chapter05/01.md","ref":"note/chapter05/01.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter05/01.md","mtime":"2019-07-16T13:03:34.264Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2019-07-16T13:06:04.340Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"5.1 开发插件helloworld","level":"1.7.1","depth":2,"next":{"title":"[6. 其他实战]","level":"1.8","depth":1,"ref":"","articles":[{"title":"6.1 TypeScript编译","level":"1.8.1","depth":2,"path":"note/chapter06/01.md","ref":"note/chapter06/01.md","articles":[]},{"title":"6.2 Babel7编译","level":"1.8.2","depth":2,"path":"note/chapter06/02.md","ref":"note/chapter06/02.md","articles":[]}]},"previous":{"title":"[5. 插件开发]","level":"1.7","depth":1,"ref":"","articles":[{"title":"5.1 开发插件helloworld","level":"1.7.1","depth":2,"path":"note/chapter05/01.md","ref":"note/chapter05/01.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter05/01.md","mtime":"2020-05-03T06:49:47.906Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2020-05-03T06:56:55.707Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

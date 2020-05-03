@@ -643,31 +643,21 @@ npm i --save-dev rollup-plugin-serve
 npm i --save-dev rollup-plugin-uglify
 
 <span class="hljs-comment">## &#x5B89;&#x88C5; rollup.js &#x7F16;&#x8BD1;ES6+&#x7684; babel &#x6A21;&#x5757;</span>
-npm i --save-dev rollup-plugin-babel babel-core babel-preset-env babel-plugin-transform-object-rest-spread
+npm i --save-dev @rollup/plugin-babel @babel/core @babel/preset-env
 </code></pre>
-<ul>
-<li><code>rollup</code> &#x6A21;&#x5757;&#x662F;rollup&#x7F16;&#x8BD1;&#x7684;&#x6838;&#x5FC3;&#x6A21;&#x5757;</li>
-</ul>
 <h3 id="&#x6B65;&#x9AA4;2-rollup&#x914D;&#x7F6E;">&#x6B65;&#x9AA4;2: rollup&#x914D;&#x7F6E;</h3>
 <ul>
 <li>&#x7F16;&#x8BD1;&#x57FA;&#x672C;&#x914D;&#x7F6E; <code>./build/rollup.config.js</code></li>
 </ul>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
-<span class="hljs-keyword">const</span> babel = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-babel&apos;</span>);
+<span class="hljs-keyword">const</span> { babel } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@rollup/plugin-babel&apos;</span>);
 
 <span class="hljs-keyword">const</span> resolveFile = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">filePath</span>) </span>{
   <span class="hljs-keyword">return</span> path.join(__dirname, <span class="hljs-string">&apos;..&apos;</span>, filePath)
 }
 
 <span class="hljs-keyword">const</span> babelOptions = {
-  <span class="hljs-string">&quot;presets&quot;</span>: [
-    [<span class="hljs-string">&quot;env&quot;</span>, {
-      <span class="hljs-string">&quot;modules&quot;</span>: <span class="hljs-literal">false</span>
-    }],
-  ],
-  <span class="hljs-string">&quot;plugins&quot;</span>: [
-    <span class="hljs-string">&quot;transform-object-rest-spread&quot;</span>,
-  ],
+  <span class="hljs-string">&quot;presets&quot;</span>: [<span class="hljs-string">&apos;@babel/preset-env&apos;</span>],
 }
 
 <span class="hljs-keyword">const</span> plugins = [
@@ -741,7 +731,6 @@ configList.map((config, index) =&gt; {
   <span class="hljs-keyword">return</span> config;
 })
 
-
 <span class="hljs-built_in">module</span>.exports = configList;
 </code></pre>
 <ul>
@@ -749,10 +738,6 @@ configList.map((config, index) =&gt; {
 </ul>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> { uglify } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;rollup-plugin-uglify&apos;</span>);
 <span class="hljs-keyword">const</span> configList = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./rollup.config&apos;</span>);
-
-<span class="hljs-keyword">const</span> resolveFile = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">filePath</span>) </span>{
-  <span class="hljs-keyword">return</span> path.join(__dirname, <span class="hljs-string">&apos;..&apos;</span>, filePath)
-}
 
 configList.map((config, index) =&gt; {
 
@@ -824,15 +809,14 @@ configList.map((config, index) =&gt; {
 <p><code>dist/index.js</code> </p>
 <pre><code class="lang-js">define([<span class="hljs-string">&apos;lib/hello&apos;</span>, <span class="hljs-string">&apos;lib/world&apos;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">hello, world</span>) </span>{ <span class="hljs-string">&apos;use strict&apos;</span>;
 
-  hello = hello &amp;&amp; hello.hasOwnProperty(<span class="hljs-string">&apos;default&apos;</span>) ? hello[<span class="hljs-string">&apos;default&apos;</span>] : hello;
-  world = world &amp;&amp; world.hasOwnProperty(<span class="hljs-string">&apos;default&apos;</span>) ? world[<span class="hljs-string">&apos;default&apos;</span>] : world;
+  hello = hello &amp;&amp; <span class="hljs-built_in">Object</span>.prototype.hasOwnProperty.call(hello, <span class="hljs-string">&apos;default&apos;</span>) ? hello[<span class="hljs-string">&apos;default&apos;</span>] : hello;
+  world = world &amp;&amp; <span class="hljs-built_in">Object</span>.prototype.hasOwnProperty.call(world, <span class="hljs-string">&apos;default&apos;</span>) ? world[<span class="hljs-string">&apos;default&apos;</span>] : world;
 
   <span class="hljs-keyword">var</span> index = {
     init: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">init</span>(<span class="hljs-params"></span>) </span>{
       <span class="hljs-keyword">var</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
       <span class="hljs-keyword">var</span> arr2 = [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>];
       <span class="hljs-built_in">console</span>.log([].concat(arr1, arr2));
-
       hello.init();
       world.init();
     }
@@ -878,6 +862,7 @@ configList.map((config, index) =&gt; {
 </ul>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.bootcss.com/babel-polyfill/6.26.0/polyfill.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">data-main</span>=<span class="hljs-string">&quot;main&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.bootcss.com/require.js/2.3.5/require.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
@@ -911,9 +896,6 @@ this lib/world module
 </code></pre>
 <h2 id="&#x540E;&#x8BB0;">&#x540E;&#x8BB0;</h2>
 <p>&#x672C;&#x7BC7;&#x8BB2;&#x8FF0;<code>rollup.js</code>&#x5904;&#x7406; AMD &#x6A21;&#x5757;&#x4F9D;&#x8D56;&#x7F16;&#x8BD1;&#x7684;&#x914D;&#x7F6E;&#x5904;&#x7406;&#xFF0C;AMD&#x7684;&#x914D;&#x7F6E;&#x5C31;&#x57FA;&#x672C;&#x5230;&#x6B64;&#x4E3A;&#x6B62;&#xFF0C;&#x4E0B;&#x4E00;&#x7BC7;&#x5C06;&#x8BB2;&#x8FF0; <code>CommonJS</code>&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C31;&#x66F4;&#x591A;&#x6D89;&#x53CA;&#x5230;Node.js&#x6A21;&#x5757;&#x7684;ES6+&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x3002;</p>
-<h2 id="&#x66F4;&#x591A;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;">&#x66F4;&#x591A;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</h2>
-<p>&#x66F4;&#x591A;&#x524D;&#x7AEF;<code>&#x6280;&#x672F;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</code>&#x548C;<code>&#x5F00;&#x6E90;&#x5B66;&#x4E60;&#x6559;&#x7A0B;</code>&#x53EF;&#x5173;&#x6CE8;&#x516C;&#x4F17;&#x53F7; <code>DeepSeaCode</code>  (<code>&#x5927;&#x6D77;&#x7801;</code> ) </p>
-<p><img src="https://user-images.githubusercontent.com/8216630/43264303-495bf52c-9118-11e8-85cd-4ec6fcc6d066.jpg" alt="qrcode_for_gh_959d1c4d729a_258"></p>
 
                                 
                                 </section>
@@ -957,7 +939,7 @@ this lib/world module
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.2.2 AMD 模块类型编译 (下)","level":"1.4.3","depth":2,"next":{"title":"2.2.3 CommonJS 模块类型编译","level":"1.4.4","depth":2,"path":"note/chapter02/02-03.md","ref":"note/chapter02/02-03.md","articles":[]},"previous":{"title":"2.2.1 AMD 模块类型编译 (上)","level":"1.4.2","depth":2,"path":"note/chapter02/02-01.md","ref":"note/chapter02/02-01.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter02/02-02.md","mtime":"2019-07-16T13:03:34.264Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2019-07-16T13:06:04.340Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.2.2 AMD 模块类型编译 (下)","level":"1.4.3","depth":2,"next":{"title":"2.2.3 CommonJS 模块类型编译","level":"1.4.4","depth":2,"path":"note/chapter02/02-03.md","ref":"note/chapter02/02-03.md","articles":[]},"previous":{"title":"2.2.1 AMD 模块类型编译 (上)","level":"1.4.2","depth":2,"path":"note/chapter02/02-01.md","ref":"note/chapter02/02-01.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/chapter02/02-02.md","mtime":"2020-05-03T06:49:47.897Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2020-05-03T06:56:55.707Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
