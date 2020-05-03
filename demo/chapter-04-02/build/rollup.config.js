@@ -1,39 +1,40 @@
 const path = require('path');
-const buble = require('rollup-plugin-buble');
-const babel = require('rollup-plugin-babel');
-const nodeResolve = require('rollup-plugin-node-resolve');
-const commonjs = require('rollup-plugin-commonjs');
-const nodeGlobals = require('rollup-plugin-node-globals');
-const vue = require('rollup-plugin-vue').default;
+const buble = require('@rollup/plugin-buble');
+const { babel } = require('@rollup/plugin-babel');
+const nodeResolve = require('@rollup/plugin-node-resolve');
+const commonjs = require('@rollup/plugin-commonjs');
+const vue = require('rollup-plugin-vue');
+const css = require('rollup-plugin-css-only');
+const replace = require('@rollup/plugin-replace')
 
 const resolveFile = function(filePath) {
   return path.join(__dirname, '..', filePath)
 }
 
+// const isProductionEnv = process.env.NODE_ENV === 'production';
+
 const babelOptions = {
-  "presets": [
-    ["env", {
-      "modules": false
-    }],
-  ],
-  "plugins": [
-    "external-helpers",
-    "transform-object-rest-spread",
-  ],
+  "presets": ['@babel/preset-env'],
 }
 
 module.exports = [
   {
     input: resolveFile('src/index.js'),
+    // input: resolveFile('src/App.vue'),
     output: {
       file: resolveFile('dist/index.js'),
-      format: 'umd',
+      format: 'iife',
+      name: 'App'
     }, 
+    // external: ['vue'],
     plugins: [
       vue(),
+      css(),
       nodeResolve(),
       commonjs(),
-      nodeGlobals(),
+      replace({
+        'process.env.NODE_ENV': JSON.stringify( 'production' )
+      }),
       babel(babelOptions),
       buble(),
     ],

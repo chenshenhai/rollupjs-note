@@ -1,7 +1,5 @@
-import Vue from 'vue/dist/vue';
+// import Vue from 'vue/dist/vue';
+import Vue from 'vue/index';
 import App from './App.vue';
 
-new Vue({
-  el: '#App',
-  render: h => h(App),
-})
+Vue.createApp(App).mount('#App');
