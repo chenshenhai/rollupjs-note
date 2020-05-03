@@ -28,7 +28,7 @@ module.exports = [
     }, 
     // external: ['vue'],
     plugins: [
-      vue(),
+      vue({css: false}),
       css(),
       nodeResolve(),
       commonjs(),
