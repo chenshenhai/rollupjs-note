@@ -2,6 +2,12 @@
 
 ## 前言
 
+### 2020年5月
+
+今年的五一假期有 5天小长假，回顾以前的笔记，发现 `Rollup` 已经更新到 `2.x` ，而且官方提供了很多丰富的插件`plugins` [github.com/rollup/plugins/](https://github.com/rollup/plugins/)。趁着假期还有点空闲时间，把本笔记的使用方式更新到最新版(截至2020年5月)的使用方式。
+
+### 2018年8月
+
 最近几个月自己开发一些`js`库或组件库，费了九牛二虎之力搭建了`webpack`脚手架，然后还要配置一堆`loader`，最后编译出来的代码还夹带了一堆`webpackJsonp([0], .....)` 的代码，使得编译后的ES5代码（未混淆）可读性降低了，也导致了结果代码体积增大。
 
 在寻找新的编译工具时候，发现`Vue.js`，`React.js`等流行库的源码都用了`rollup.js`来编译代码，同时相关库的编译也输出了各种模块规范`AMD`、`CommonJS`、`UMD`和`IIFE`。因此选择了`rollup.js`来实践开发日常的工具，在玩了几个月的的`rollup.js`后，将学习的过程中记录成这本书，也沉淀了学习过程中的demo，方便以后搭建脚手架时候查看。
@@ -15,13 +21,8 @@
 - [关于作者(我)](https://chenshenhai.github.io/)
 - [作者(我)Github](https://github.com/chenshenhai/)
 - [gitbook在线阅读入口](https://chenshenhai.github.io/rollupjs-note/)
+- 本书便捷阅读入口 [chenshenhai.com/rollupjs-note](https://chenshenhai.com/rollupjs-note)
 - 如有错误或疑问欢迎，提交[issues](https://github.com/chenshenhai/rollupjs-note/issues)或PR
-
-更多前端`技术学习`和`开源学习教程`可关注公众号 `DeepSeaCode`  (`大海码` ) 
-
-![qrcode_for_gh_959d1c4d729a_258](https://user-images.githubusercontent.com/8216630/43264303-495bf52c-9118-11e8-85cd-4ec6fcc6d066.jpg)
-
-<br/>
 
 
 ## 目录
@@ -58,3 +59,11 @@
 * [6. 其他实战]
     * [6.1 TypeScript编译](https://github.com/chenshenhai/rollupjs-note/tree/master/note/chapter06/01.md)
     * [6.2 Babel7 编译](https://github.com/chenshenhai/rollupjs-note/tree/master/note/chapter06/02.md)
+
+
+## 更多学习笔记
+
+更多前端`技术学习`和`开源学习教程`可关注公众号 `DeepSeaCode`  (`大海码` ) 
+
+![qrcode_for_gh_959d1c4d729a_258](https://user-images.githubusercontent.com/8216630/43264303-495bf52c-9118-11e8-85cd-4ec6fcc6d066.jpg)
+
